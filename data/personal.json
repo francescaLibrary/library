@@ -1,0 +1,65 @@
+{
+  "name": "Francesca",
+  "role": "Lettrice Appassionata",
+  "profileImage": "assets/images/profile.jpg",
+  "bio": "Da sempre innamorata delle storie, ho iniziato a leggere da bambina e non ho mai smesso. Ogni libro è un viaggio, ogni pagina una scoperta. Con questo blog voglio condividere le mie letture, le emozioni che mi hanno regalato e, spero, ispirare altri a scoprire la magia dei libri.",
+  "bioExtended": "La mia passione per la lettura è nata tra gli scaffali della biblioteca del mio paese. Ricordo ancora il profumo dei libri antichi e la sensazione di tenere in mano mondi interi. Oggi, dopo migliaia di pagine e centinaia di storie, quella magia non si è mai spenta. Leggo di tutto: dai grandi classici ai thriller contemporanei, dai romanzi storici alle saghe familiari. Ogni genere ha il suo fascino, ogni autore la sua voce unica. Con 'Pagine e Parole' voglio creare uno spazio dove condividere questa passione, dove le recensioni non sono solo giudizi ma conversazioni su ciò che i libri ci lasciano dentro.",
+  "location": "Italia",
+  "readingGoal": {
+    "year": 2025,
+    "target": 50,
+    "current": 12
+  },
+  "favoriteGenres": [
+    {
+      "name": "Narrativa Contemporanea",
+      "icon": "📖",
+      "description": "Storie che parlano del nostro tempo"
+    },
+    {
+      "name": "Gialli e Thriller",
+      "icon": "🔍",
+      "description": "L'adrenalina del mistero"
+    },
+    {
+      "name": "Romanzi Storici",
+      "icon": "🏛️",
+      "description": "Viaggi nel passato"
+    },
+    {
+      "name": "Classici",
+      "icon": "📜",
+      "description": "Le fondamenta della letteratura"
+    }
+  ],
+  "favoriteAuthors": [
+    "Elena Ferrante",
+    "Umberto Eco",
+    "Donna Tartt",
+    "Ken Follett",
+    "Isabel Allende"
+  ],
+  "currentlyReading": {
+    "title": "L'amica geniale",
+    "author": "Elena Ferrante",
+    "progress": 65
+  },
+  "funFacts": [
+    {
+      "icon": "☕",
+      "text": "Non riesco a leggere senza una tazza di tè accanto"
+    },
+    {
+      "icon": "🌙",
+      "text": "Le mie sessioni di lettura preferite sono quelle serali"
+    },
+    {
+      "icon": "📑",
+      "text": "Uso sempre i segnalibri, mai piegare le pagine!"
+    },
+    {
+      "icon": "📚",
+      "text": "Ho sempre almeno 3 libri sul comodino"
+    }
+  ]
+}

@@ -1,0 +1,235 @@
+{
+  "books": [
+    {
+      "id": "il-cardellino",
+      "title": "Il Cardellino",
+      "author": "Donna Tartt",
+      "cover": "assets/covers/il-cardellino.jpg",
+      "genres": ["narrativa-contemporanea", "romanzo-formazione"],
+      "year": 2013,
+      "pages": 1024,
+      "publisher": "Rizzoli",
+      "isbn": "978-8817079730",
+      "dateRead": "2025-01",
+      "rating": 5,
+      "favorite": true,
+      "bookOfMonth": true,
+      "review": "Un capolavoro assoluto che mi ha tenuta incollata alle pagine per settimane. La storia di Theo Decker, rimasto orfano dopo un attentato al Metropolitan Museum, è un viaggio epico attraverso il dolore, la bellezza e la redenzione. Donna Tartt ha la capacità rara di rendere ogni dettaglio vivido e significativo. Il cardellino del titolo, il piccolo dipinto di Fabritius che Theo porta con sé, diventa simbolo di tutto ciò che è fragile e prezioso nella vita. Ho pianto, ho trattenuto il fiato, ho amato ogni singola pagina. Un libro che ti cambia.",
+      "quotes": [
+        "E non importa quanto le cose si trasformino in catastrofe, perché la bellezza è bellezza, e nulla può cancellarla.",
+        "Ciò che è sopravvissuto, ci ha scelto."
+      ],
+      "tags": ["premio-pulitzer", "arte", "crescita", "perdita", "new-york"]
+    },
+    {
+      "id": "il-nome-della-rosa",
+      "title": "Il Nome della Rosa",
+      "author": "Umberto Eco",
+      "cover": "assets/covers/il-nome-della-rosa.jpg",
+      "genres": ["giallo-thriller", "romanzo-storico", "classici"],
+      "year": 1980,
+      "pages": 512,
+      "publisher": "Bompiani",
+      "isbn": "978-8845292613",
+      "dateRead": "2024-11",
+      "rating": 5,
+      "favorite": true,
+      "review": "Un'opera monumentale che unisce il giallo medievale alla riflessione filosofica. Guglielmo da Baskerville e il giovane Adso ci guidano in un'indagine tra le mura di un'abbazia benedettina dove i monaci muoiono in circostanze misteriose. Ma il vero protagonista è il sapere: i libri, la conoscenza, il potere della parola. Eco costruisce un labirinto narrativo in cui ogni dettaglio ha un significato, ogni personaggio porta con sé secoli di storia. Non è una lettura semplice, ma è una lettura necessaria.",
+      "quotes": [
+        "I libri non sono fatti per essere creduti, ma per essere sottoposti a indagine.",
+        "La biblioteca è un grande labirinto, segno del labirinto del mondo."
+      ],
+      "tags": ["medievale", "monastero", "mistero", "filosofia", "libri"]
+    },
+    {
+      "id": "lamica-geniale",
+      "title": "L'amica geniale",
+      "author": "Elena Ferrante",
+      "cover": "assets/covers/amica-geniale.jpg",
+      "genres": ["narrativa-contemporanea", "saga-familiare"],
+      "year": 2011,
+      "pages": 400,
+      "publisher": "E/O",
+      "isbn": "978-8866321262",
+      "dateRead": "2024-09",
+      "rating": 5,
+      "favorite": true,
+      "review": "Il primo volume di una saga che ha conquistato il mondo, e a ragione. L'amicizia tra Elena e Lila nel rione di Napoli degli anni '50 è raccontata con una potenza narrativa straordinaria. Ferrante scava nell'animo femminile con una precisione chirurgica, mostrando come l'amicizia possa essere al tempo stesso salvezza e gabbia. Il rione diventa un personaggio a sé, con le sue regole spietate e i suoi sogni repressi. Ho divorato questo libro e mi sono subito tuffata nel secondo volume.",
+      "quotes": [
+        "Lei era il mio genio, io volevo essere il suo.",
+        "Studiare per me era diventato il modo di seguire Lila dentro la sua testa."
+      ],
+      "tags": ["napoli", "amicizia-femminile", "anni-50", "crescita"]
+    },
+    {
+      "id": "i-pilastri-della-terra",
+      "title": "I Pilastri della Terra",
+      "author": "Ken Follett",
+      "cover": "assets/covers/pilastri-terra.jpg",
+      "genres": ["romanzo-storico", "saga-familiare"],
+      "year": 1989,
+      "pages": 1072,
+      "publisher": "Mondadori",
+      "isbn": "978-8804667926",
+      "dateRead": "2024-07",
+      "rating": 5,
+      "favorite": true,
+      "review": "Un'epopea grandiosa ambientata nell'Inghilterra del XII secolo, intorno alla costruzione di una cattedrale. Follett intreccia le vite di decine di personaggi - monaci, costruttori, nobili, fuorilegge - in un affresco storico che toglie il fiato. La cattedrale di Kingsbridge diventa simbolo di aspirazione umana, di bellezza che nasce dalla fatica e dal sacrificio. Ho imparato più sull'architettura gotica da questo romanzo che da qualsiasi manuale. Un libro che ti fa vivere un'epoca intera.",
+      "quotes": [
+        "La cattedrale era tutto ciò che lui non era: vasta, solida, eterna."
+      ],
+      "tags": ["medioevo", "inghilterra", "cattedrale", "epico"]
+    },
+    {
+      "id": "la-casa-degli-spiriti",
+      "title": "La Casa degli Spiriti",
+      "author": "Isabel Allende",
+      "cover": "assets/covers/casa-spiriti.jpg",
+      "genres": ["saga-familiare", "romanzo-storico"],
+      "year": 1982,
+      "pages": 432,
+      "publisher": "Feltrinelli",
+      "isbn": "978-8807880575",
+      "dateRead": "2024-05",
+      "rating": 4,
+      "favorite": false,
+      "review": "Una saga familiare che attraversa quattro generazioni di donne in Cile, mescolando realismo magico e storia. Clara, con i suoi poteri chiaroveggenti, domina il racconto con la sua presenza eterea. Allende racconta l'amore, la violenza, la politica con una prosa lussureggiante che a tratti può risultare eccessiva, ma che ha il potere di trasportarti completamente in quel mondo. Il finale, che si intreccia con il colpo di stato di Pinochet, è straziante.",
+      "quotes": [
+        "La memoria è fragile e il passato scorre via come acqua tra le dita."
+      ],
+      "tags": ["cile", "realismo-magico", "donne", "storia"]
+    },
+    {
+      "id": "orgoglio-pregiudizio",
+      "title": "Orgoglio e Pregiudizio",
+      "author": "Jane Austen",
+      "cover": "assets/covers/orgoglio-pregiudizio.jpg",
+      "genres": ["classici", "rosa-sentimentale"],
+      "year": 1813,
+      "pages": 352,
+      "publisher": "Einaudi",
+      "isbn": "978-8806219352",
+      "dateRead": "2024-03",
+      "rating": 5,
+      "favorite": true,
+      "review": "Una rilettura dopo anni, e ho riscoperto perché questo romanzo è immortale. Elizabeth Bennet è un'eroina moderna ante litteram: intelligente, ironica, orgogliosa nel senso migliore del termine. Il suo duello verbale con Mr. Darcy è una danza perfetta di fraintendimenti e rivelazioni. Austen dipinge la società inglese dell'epoca con pennellate satiriche precise, ma al centro c'è sempre il cuore umano con le sue debolezze e i suoi slanci.",
+      "quotes": [
+        "È cosa satisfatta ormai che un uomo celibe, con una buona fortuna, debba per forza aver bisogno di una moglie.",
+        "In vano mi sono sforzato. Non riesco più a frenare i miei sentimenti."
+      ],
+      "tags": ["regency", "inghilterra", "matrimonio", "ironia"]
+    },
+    {
+      "id": "la-ragazza-del-treno",
+      "title": "La Ragazza del Treno",
+      "author": "Paula Hawkins",
+      "cover": "assets/covers/ragazza-treno.jpg",
+      "genres": ["giallo-thriller"],
+      "year": 2015,
+      "pages": 320,
+      "publisher": "Piemme",
+      "isbn": "978-8856648454",
+      "dateRead": "2024-02",
+      "rating": 3,
+      "favorite": false,
+      "review": "Un thriller psicologico che si legge d'un fiato, con una protagonista imperfetta e a tratti irritante. Rachel, alcolizzata e ossessionata dalla sua ex vita, osserva ogni giorno dal treno le finestre di una casa dove vive una coppia apparentemente perfetta. Quando la donna scompare, Rachel viene coinvolta nel caso. La struttura narrativa con tre voci femminili è efficace, ma alcune svolte sono prevedibili. Intrattenimento puro, niente di più.",
+      "quotes": [],
+      "tags": ["psicologico", "suspense", "donna"]
+    },
+    {
+      "id": "cent-anni-solitudine",
+      "title": "Cent'anni di Solitudine",
+      "author": "Gabriel García Márquez",
+      "cover": "assets/covers/centanni-solitudine.jpg",
+      "genres": ["classici", "saga-familiare"],
+      "year": 1967,
+      "pages": 464,
+      "publisher": "Mondadori",
+      "isbn": "978-8804668534",
+      "dateRead": "2024-01",
+      "rating": 4,
+      "favorite": false,
+      "review": "Il capolavoro del realismo magico, la storia della famiglia Buendía e della città di Macondo attraverso sette generazioni. È un libro che richiede pazienza e abbandono: i nomi che si ripetono, gli eventi che si sovrappongono, il tempo che gira su se stesso. Quando finalmente entri nel ritmo di Márquez, ti ritrovi in un universo dove piogge durano anni, i morti tornano a parlare e la solitudine è il destino ineluttabile di ogni essere umano. Non per tutti, ma indimenticabile.",
+      "quotes": [
+        "Molti anni dopo, di fronte al plotone di esecuzione, il colonnello Aureliano Buendía avrebbe ricordato quel remoto pomeriggio in cui suo padre lo aveva condotto a conoscere il ghiaccio."
+      ],
+      "tags": ["colombia", "realismo-magico", "famiglia", "nobel"]
+    },
+    {
+      "id": "il-giardino-segreto",
+      "title": "Il Giardino Segreto",
+      "author": "Frances Hodgson Burnett",
+      "cover": "assets/covers/giardino-segreto.jpg",
+      "genres": ["classici", "romanzo-formazione"],
+      "year": 1911,
+      "pages": 256,
+      "publisher": "BUR",
+      "isbn": "978-8817102858",
+      "dateRead": "2023-12",
+      "rating": 4,
+      "favorite": false,
+      "review": "Un classico dell'infanzia che riletto da adulta rivela nuove profondità. Mary Lennox, bambina viziata e sola, trova nella scoperta di un giardino abbandonato la chiave per trasformare se stessa e chi la circonda. La metafora della cura - delle piante, di sé, degli altri - è potente e sempre attuale. Un libro che ricorda come la natura e l'amore possano guarire le ferite più profonde.",
+      "quotes": [
+        "Se guardi nel modo giusto, puoi vedere che il mondo intero è un giardino."
+      ],
+      "tags": ["infanzia", "guarigione", "natura", "inghilterra"]
+    },
+    {
+      "id": "la-storia-infinita",
+      "title": "La Storia Infinita",
+      "author": "Michael Ende",
+      "cover": "assets/covers/storia-infinita.jpg",
+      "genres": ["fantasy", "romanzo-formazione"],
+      "year": 1979,
+      "pages": 480,
+      "publisher": "Longanesi",
+      "isbn": "978-8830435933",
+      "dateRead": "2023-11",
+      "rating": 5,
+      "favorite": true,
+      "review": "Molto più del film che tutti conosciamo. Bastiano Baldassarre Bucci trova un libro che lo porta nel mondo di Fantàsia, ma il vero viaggio è dentro se stesso. Ende costruisce una riflessione sulla fantasia, sul potere delle storie, sul coraggio di essere chi siamo veramente. La seconda parte del libro, quella che il film ignora, è forse la più importante: cosa succede quando i nostri desideri si avverano? Un capolavoro per tutte le età.",
+      "quotes": [
+        "Chi non ha mai versato lacrime vere non le piangerà mai a Fantàsia."
+      ],
+      "tags": ["fantasia", "meta-narrativa", "infanzia", "desideri"]
+    },
+    {
+      "id": "steve-jobs",
+      "title": "Steve Jobs",
+      "author": "Walter Isaacson",
+      "cover": "assets/covers/steve-jobs.jpg",
+      "genres": ["biografia"],
+      "year": 2011,
+      "pages": 656,
+      "publisher": "Mondadori",
+      "isbn": "978-8804614661",
+      "dateRead": "2023-09",
+      "rating": 4,
+      "favorite": false,
+      "review": "La biografia definitiva del fondatore di Apple, scritta con la sua collaborazione ma senza censure. Jobs emerge come un genio visionario ma anche come un uomo difficile, a tratti crudele. Isaacson non nasconde le ombre: l'abbandono della figlia, il perfezionismo tossico, le bugie. Ma mostra anche come quella stessa intensità abbia cambiato per sempre il modo in cui viviamo. Una lettura che fa riflettere su cosa siamo disposti a sacrificare per l'eccellenza.",
+      "quotes": [
+        "Stay hungry, stay foolish."
+      ],
+      "tags": ["apple", "tecnologia", "innovazione", "silicon-valley"]
+    },
+    {
+      "id": "sapiens",
+      "title": "Sapiens. Da animali a dèi",
+      "author": "Yuval Noah Harari",
+      "cover": "assets/covers/sapiens.jpg",
+      "genres": ["saggistica"],
+      "year": 2011,
+      "pages": 530,
+      "publisher": "Bompiani",
+      "isbn": "978-8845297915",
+      "dateRead": "2023-07",
+      "rating": 4,
+      "favorite": false,
+      "review": "Una storia dell'umanità che si legge come un romanzo. Harari ripercorre i 70.000 anni della nostra specie con uno sguardo provocatorio e originale. La tesi centrale - che ciò che ci distingue è la capacità di credere in finzioni collettive come denaro, nazioni, religioni - è illuminante. Alcune semplificazioni sono discutibili, ma il libro riesce nel suo intento: farti guardare la storia umana con occhi nuovi.",
+      "quotes": [
+        "La storia ha cominciato quando gli uomini hanno inventato gli dèi, e finirà quando gli uomini diventeranno dèi."
+      ],
+      "tags": ["storia", "evoluzione", "società", "filosofia"]
+    }
+  ]
+}

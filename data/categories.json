@@ -1,0 +1,81 @@
+{
+  "genres": [
+    {
+      "id": "narrativa-contemporanea",
+      "name": "Narrativa Contemporanea",
+      "icon": "📖",
+      "color": "#722F37",
+      "description": "Romanzi ambientati nel presente che esplorano la complessità della vita moderna"
+    },
+    {
+      "id": "giallo-thriller",
+      "name": "Giallo / Thriller",
+      "icon": "🔍",
+      "color": "#1a1a2e",
+      "description": "Misteri da risolvere e suspense che toglie il fiato"
+    },
+    {
+      "id": "romanzo-storico",
+      "name": "Romanzo Storico",
+      "icon": "🏛️",
+      "color": "#8B4513",
+      "description": "Storie che ci trasportano in epoche passate"
+    },
+    {
+      "id": "classici",
+      "name": "Classici",
+      "icon": "📜",
+      "color": "#2F4F4F",
+      "description": "Le opere immortali della letteratura mondiale"
+    },
+    {
+      "id": "saga-familiare",
+      "name": "Saga Familiare",
+      "icon": "👨‍👩‍👧‍👦",
+      "color": "#6B4423",
+      "description": "Generazioni che si intrecciano in storie epiche"
+    },
+    {
+      "id": "fantasy",
+      "name": "Fantasy",
+      "icon": "🐉",
+      "color": "#4B0082",
+      "description": "Mondi magici e avventure straordinarie"
+    },
+    {
+      "id": "biografia",
+      "name": "Biografia / Memoir",
+      "icon": "👤",
+      "color": "#556B2F",
+      "description": "Vite straordinarie raccontate in prima persona"
+    },
+    {
+      "id": "saggistica",
+      "name": "Saggistica",
+      "icon": "🎓",
+      "color": "#36454F",
+      "description": "Approfondimenti e riflessioni sul mondo che ci circonda"
+    },
+    {
+      "id": "romanzo-formazione",
+      "name": "Romanzo di Formazione",
+      "icon": "🌱",
+      "color": "#228B22",
+      "description": "Storie di crescita e scoperta di sé"
+    },
+    {
+      "id": "rosa-sentimentale",
+      "name": "Rosa / Sentimentale",
+      "icon": "💕",
+      "color": "#DB7093",
+      "description": "Storie d'amore che scaldano il cuore"
+    }
+  ],
+  "ratingLabels": {
+    "5": "Capolavoro",
+    "4": "Ottimo",
+    "3": "Buono",
+    "2": "Discreto",
+    "1": "Deludente"
+  }
+}
