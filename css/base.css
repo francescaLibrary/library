@@ -119,7 +119,7 @@ img { max-width: 100%; height: auto; display: block; }
     padding: 0 var(--space-xl);
 }
 .container-narrow { max-width: var(--container-narrow); }
-.container-lrb { max-width: 1000px; }
+.container-lrb { max-width: 1080px; }
 
 .section { padding: var(--space-3xl) 0; }
 

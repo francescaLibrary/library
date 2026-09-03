@@ -78,6 +78,68 @@ class ComponentLoader {
 
         // Mobile menu toggle
         this.initMobileMenu();
+
+        // Global search
+        this.initSearch();
+    }
+
+    /**
+     * Global site search with live results
+     */
+    initSearch() {
+        const panel = document.getElementById('searchPanel');
+        const input = document.getElementById('globalSearchInput');
+        const results = document.getElementById('searchResults');
+        const closeBtn = document.getElementById('searchClose');
+        if (!panel || !input || !results) return;
+
+        const esc = (s) => String(s ?? '')
+            .replace(/&/g, '&amp;').replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+
+        const open = () => { panel.hidden = false; input.focus(); };
+        const close = () => { panel.hidden = true; input.value = ''; results.innerHTML = ''; };
+
+        document.querySelectorAll('[data-search-open]').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                panel.hidden ? open() : close();
+            });
+        });
+        if (closeBtn) closeBtn.addEventListener('click', close);
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !panel.hidden) close();
+        });
+        document.addEventListener('click', (e) => {
+            if (!panel.hidden && !panel.contains(e.target) &&
+                !e.target.closest('[data-search-open]')) {
+                close();
+            }
+        });
+
+        let timeout;
+        input.addEventListener('input', () => {
+            clearTimeout(timeout);
+            timeout = setTimeout(async () => {
+                const q = input.value.trim();
+                if (q.length < 2) {
+                    results.innerHTML = '<p class="search-hint">Scrivi almeno 2 caratteri per cercare tra titoli, autori e recensioni.</p>';
+                    return;
+                }
+                const books = await window.DataLoader.getBooks({ search: q, limit: 7 });
+                if (!books.length) {
+                    results.innerHTML = `<p class="search-empty">Nessun risultato per &ldquo;${esc(q)}&rdquo;.</p>
+                        <a class="search-all" href="recensioni.html">Sfoglia tutte le recensioni &rarr;</a>`;
+                    return;
+                }
+                results.innerHTML = books.map(b => `
+                    <a class="search-hit" href="libro.html?id=${b.id}">
+                        <span class="search-hit-title">${esc(b.title)}</span>
+                        <span class="search-hit-author">di ${esc(b.author)}</span>
+                    </a>`).join('') +
+                    `<a class="search-all" href="recensioni.html?cerca=${encodeURIComponent(q)}">Vedi tutti i risultati &rarr;</a>`;
+            }, 200);
+        });
     }
 
     /**

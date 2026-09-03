@@ -55,8 +55,6 @@
 .book-of-month.section--dark { background: var(--ink-deep); color: #EDE8DE; padding: var(--space-2xl) 0; }
 .latest-reviews { padding: var(--space-3xl) 0; }
 .genres-section { padding: var(--space-2xl) 0 var(--space-3xl); }
-.quote-section { padding: var(--space-3xl) 0; }
-.cta-home { padding: var(--space-3xl) 0; }
 .section-header--center { text-align: center; margin-left: auto; margin-right: auto; }
 
 /* ─── Masthead home LRB ─── */
@@ -73,10 +71,10 @@
 .lrb-listing-title { font-size: 2rem; color: var(--lrb-blue); }
 .book-of-month.section--dark { background: var(--lrb-navy-deep); }
 
-/* ─── Pagina libro LRB: main 620px + sidebar 280px ─── */
+/* ─── Pagina libro LRB: main 680px + sidebar 300px ─── */
 .book-single { --lrb-text: #2b2b2b; --lrb-link: #2f6ea5; --lrb-date: #7fa8c4; padding: var(--space-2xl) 0 var(--space-3xl); }
-.book-single-layout { display: grid; grid-template-columns: minmax(0, 620px) 280px; gap: 3rem; justify-content: center; align-items: start; }
-.book-single-main { min-width: 0; max-width: 620px; }
+.book-single-layout { display: grid; grid-template-columns: minmax(0, 680px) 300px; gap: 3rem; justify-content: center; align-items: start; }
+.book-single-main { min-width: 0; max-width: 680px; }
 .book-single-kicker { font-family: var(--font-sans); font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.16em; color: var(--muted); margin-bottom: 0.75rem; }
 .book-single-title { font-size: clamp(2.2rem, 1.6rem + 3vw, 3rem); line-height: 1.1; color: #1f4a6b; margin-bottom: 0.5rem; }
 .book-single-author { font-family: var(--font-body); font-size: 1.2rem; font-style: italic; color: var(--lrb-link); margin-bottom: 0.4rem; }
@@ -91,13 +89,15 @@
 .book-single-figure { margin: 0 0 1.75rem; }
 .book-single-caption, .book-single-figure figcaption { font-family: var(--font-body); font-style: italic; font-size: 0.85rem; color: var(--ink-2); text-align: center; margin-top: 0.6rem; line-height: 1.5; }
 .book-single-rating { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; flex-wrap: wrap; }
-.book-single-genres { margin-bottom: 1.5rem; }
+.book-single-genres { margin-bottom: 2rem; }
+.book-single-tags { margin-bottom: 0.5rem; }
 .book-single-review { margin-bottom: 2.5rem; }
 .book-single-review-text { font-family: var(--font-body); font-size: 18px; line-height: 1.7; color: var(--lrb-text); }
 .book-single-review-text p { margin-bottom: 1.4rem; }
 .book-single-review-text a { color: var(--lrb-link); text-decoration: underline; text-underline-offset: 2px; }
 .book-single-review-text p:first-of-type::first-letter { font-family: var(--font-display); font-size: 4.2em; line-height: 0.8; float: left; padding: 0.06em 0.14em 0 0; color: var(--ink); }
 .book-single-quotes { margin-bottom: 2.5rem; }
+.book-single-quotes-title { font-family: var(--font-sans); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.14em; color: var(--accent); margin: 0 0 1.5rem; padding-top: 0.5rem; }
 .book-single-quotes-list { display: flex; flex-direction: column; gap: 1.75rem; }
 .book-single-quotes-list .lrb-quote { margin: 0; padding: 0.25rem 0 0.25rem 1.5rem; border-left: 3px solid var(--line-strong); }
 .book-single-quotes-list .lrb-quote-text { font-family: var(--font-body); font-style: italic; font-size: 1.2rem; line-height: 1.65; color: var(--lrb-text); margin-bottom: 0.5rem; }
@@ -132,9 +132,9 @@
 .book-single-cover img { width: 100%; height: auto; aspect-ratio: 2 / 3; object-fit: cover; border-radius: var(--radius-lg); border: 1px solid var(--line); }
 .book-single-cover-placeholder { aspect-ratio: 2 / 3; background: var(--paper-warm); border: 1px solid var(--line); border-radius: var(--radius-lg); display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end; color: var(--ink); padding: 1.25rem; }
 .book-single-details { border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 1.25rem; background: var(--paper); }
-@media (max-width: 980px) {
+@media (max-width: 1024px) {
     .book-single-layout { grid-template-columns: minmax(0, 1fr); }
-    .book-single-main, .book-single-sidebar { max-width: 620px; margin: 0 auto; width: 100%; }
+    .book-single-main, .book-single-sidebar { max-width: 680px; margin: 0 auto; width: 100%; }
     .book-single-grid { grid-template-columns: minmax(0, 200px) minmax(0, 1fr); gap: 2rem; }
 }
 @media (max-width: 768px) {

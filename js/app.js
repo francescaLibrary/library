@@ -19,13 +19,6 @@ class App {
         // Load common components
         await this.componentLoader.loadAllComponents(page);
 
-        // Sub-masthead title per pagina (stile LRB blog)
-        const subMast = document.getElementById('subMastTitle');
-        if (subMast) {
-            const titles = { home: 'Pagine e Parole blog', recensioni: 'Recensioni', libro: 'Recensioni', libreria: 'Libreria', termini: 'Termini e condizioni', privacy: 'Privacy' };
-            subMast.textContent = titles[page] || 'Pagine e Parole blog';
-        }
-
         // Initialize page-specific content
         switch (page) {
             case 'home':
@@ -50,12 +43,11 @@ class App {
      * Initialize home page
      */
     async initHomePage() {
-        const [site, genres, stats, latestBooks, favoriteBooks, allBooks] = await Promise.all([
+        const [site, genres, stats, latestBooks, allBooks] = await Promise.all([
             this.dataLoader.load('site.json'),
             this.dataLoader.getGenres(),
             this.dataLoader.getStats(),
             this.dataLoader.getBooks({ limit: 6, sort: 'date-desc' }),
-            this.dataLoader.getBooks({ favorite: true, limit: 3 }),
             this.dataLoader.getBooks({})
         ]);
 
@@ -88,19 +80,6 @@ class App {
             featuredSlot.innerHTML = this.renderer.renderFeaturedBook(latestBooks[0], genres);
         }
 
-        // Random quote from favorites
-        if (favoriteBooks.length > 0) {
-            const booksWithQuotes = favoriteBooks.filter(b => b.quotes && b.quotes.length > 0);
-            if (booksWithQuotes.length > 0) {
-                const randomBook = booksWithQuotes[Math.floor(Math.random() * booksWithQuotes.length)];
-                const randomQuote = randomBook.quotes[Math.floor(Math.random() * randomBook.quotes.length)];
-                const quoteContainer = document.getElementById('quote-section');
-                if (quoteContainer) {
-                    quoteContainer.innerHTML = this.renderer.renderQuote(randomQuote, randomBook.title, randomBook.author);
-                }
-            }
-        }
-
         // Genre chips with counts
         const chipsContainer = document.getElementById('genre-chips');
         if (chipsContainer && genres.length > 0) {
@@ -109,12 +88,6 @@ class App {
                 (book.genres || []).forEach(g => { counts[g] = (counts[g] || 0) + 1; });
             });
             chipsContainer.innerHTML = this.renderer.renderGenreChips(genres, counts);
-        }
-
-        // CTA box (solo testo, niente form finti)
-        const ctaContainer = document.getElementById('home-cta');
-        if (ctaContainer && site?.cta) {
-            ctaContainer.innerHTML = this.renderer.renderCTA(site.cta);
         }
     }
 
