@@ -44,6 +44,7 @@ html {
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    overflow-x: clip;
 }
 
 body {
@@ -55,6 +56,7 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    overflow-x: clip;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -74,6 +76,11 @@ p { margin-bottom: 1rem; }
 p:last-child { margin-bottom: 0; }
 
 a { color: inherit; text-decoration: none; transition: var(--transition); }
+
+/* Immagini sempre contenute — gli attributi width/height HTML servono solo anti-layout-shift */
+img { max-width: 100%; height: auto; display: block; }
+.book-card-cover img, .featured-book-cover img, .library-item img { height: 100%; }
+.book-single-cover img { width: 100%; aspect-ratio: 2 / 3; object-fit: cover; }
 
 /* Contenitori — più aria, misura di lettura stretta */
 .container {

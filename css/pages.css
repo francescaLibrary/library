@@ -35,8 +35,8 @@
     .hero { padding: 3.5rem 0 2.5rem; }
     .hero-title { letter-spacing: -0.02em; }
     .hero-description { font-size: 1.15rem; }
-    .hero-buttons .btn { width: 100%; justify-content: center; }
-    .hero-buttons .link-arrow { margin-top: 0.25rem; }
+    .hero-buttons { flex-direction: column; align-items: flex-start; gap: 1rem; }
+    .hero-buttons .btn { width: auto; }
 }
 
 /* ─── Intestazione pagina interna ─── */
@@ -50,8 +50,9 @@
 .page-header-count { font-family: var(--font-sans); font-style: normal; font-size: 0.85rem; color: var(--muted); }
 
 /* ─── Sezioni home ─── */
-.book-of-month { background: transparent; padding: var(--space-2xl) 0; }
-.book-of-month.section--dark { padding: var(--space-3xl) 0; }
+.book-of-month { padding: var(--space-2xl) 0; }
+/* Specificità maggiore di .section--dark: il fondo scuro deve vincere */
+.book-of-month.section--dark { background: var(--ink-deep); color: #EDE8DE; padding: var(--space-3xl) 0; }
 .latest-reviews { padding: var(--space-3xl) 0; }
 .genres-section { padding: var(--space-2xl) 0 var(--space-3xl); }
 .quote-section { padding: var(--space-3xl) 0; }
@@ -60,7 +61,7 @@
 
 /* ─── Pagina libro: misura stretta, copertina adattiva ─── */
 .book-single { padding: var(--space-2xl) 0 var(--space-3xl); }
-.book-single-grid { display: grid; grid-template-columns: minmax(180px, 260px) minmax(0, 620px); gap: 3.5rem; align-items: start; justify-content: center; }
+.book-single-grid { display: grid; grid-template-columns: minmax(0, 260px) minmax(0, 620px); gap: 3.5rem; align-items: start; justify-content: center; }
 .book-single-cover { position: sticky; top: 100px; }
 .book-single-cover img { width: 100%; height: auto; aspect-ratio: 2 / 3; object-fit: cover; border-radius: var(--radius-lg); box-shadow: none; border: 1px solid var(--line); }
 .book-single-cover-placeholder {
@@ -97,26 +98,26 @@
 .book-single-quotes-list .quote-text { font-size: 1.25rem; margin: 0 0 0.5rem; }
 .book-single-quotes-list .quote-source { justify-content: flex-start; }
 .book-single-details { background: transparent; border-top: 1px solid var(--line); border-radius: 0; padding: 1.75rem 0; }
-.book-single-details-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
+.book-single-details-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem; }
 .book-single-details-label { color: var(--muted); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; }
 .book-single-details-value { color: var(--ink); font-size: 0.95rem; }
-@media (max-width: 900px) { .book-single-grid { grid-template-columns: 200px 1fr; gap: 2rem; } }
+@media (max-width: 900px) { .book-single-grid { grid-template-columns: minmax(0, 200px) minmax(0, 1fr); gap: 2rem; } }
 @media (max-width: 768px) {
-    .book-single-grid { grid-template-columns: 1fr; gap: 1.75rem; }
+    .book-single-grid { grid-template-columns: minmax(0, 1fr); gap: 1.75rem; }
     .book-single-cover { position: static; max-width: 190px; margin: 0; }
-    .book-single-details-grid { grid-template-columns: 1fr 1fr; }
+    .book-single-details-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
     .book-single-review-text { font-size: 1.1rem; }
 }
 
 /* ─── Correlati (fine pagina libro) ─── */
-.related { border-top: 1px solid var(--line); padding: var(--space-2xl) 0 0; margin-top: var(--space-2xl); }
-.related .book-grid { grid-template-columns: repeat(3, 1fr); gap: 2rem 1.5rem; }
-@media (max-width: 768px) { .related .book-grid { grid-template-columns: repeat(3, 1fr); gap: 1.25rem 0.75rem; } }
-@media (max-width: 560px) { .related .book-grid { grid-template-columns: repeat(2, 1fr); } }
+.related { border-top: 1px solid var(--line); padding: var(--space-2xl) 0 0; margin-top: var(--space-2xl); min-width: 0; }
+.related .book-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2rem 1.5rem; }
+@media (max-width: 768px) { .related .book-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem 0.75rem; } }
+@media (max-width: 560px) { .related .book-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 
 /* ─── Libreria: griglia ariosa, titoli sempre leggibili su touch ─── */
-.library-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 2rem 1.5rem; }
-.library-item { aspect-ratio: 2 / 3; border-radius: var(--radius-lg); overflow: hidden; background: var(--paper-warm); }
+.library-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 2rem 1.5rem; }
+.library-item { aspect-ratio: 2 / 3; border-radius: var(--radius-lg); overflow: hidden; background: var(--paper-warm); min-width: 0; }
 .library-item:hover { transform: none; box-shadow: none; }
 .library-item img { width: 100%; height: 100%; object-fit: cover; }
 .library-item-placeholder { background: var(--paper-warm); color: var(--muted); font-family: var(--font-display); font-style: italic; }
@@ -125,10 +126,10 @@
 /* Su touch l'hover non esiste: mostra sempre i titoli */
 @media (hover: none) { .library-item-overlay { opacity: 1; } }
 .library-item-title { font-size: 0.9rem; }
-@media (max-width: 1024px) { .library-grid { grid-template-columns: repeat(4, 1fr); } }
-@media (max-width: 768px) { .library-grid { grid-template-columns: repeat(3, 1fr); gap: 1.25rem 1rem; } }
+@media (max-width: 1024px) { .library-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+@media (max-width: 768px) { .library-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem 1rem; } }
 @media (max-width: 520px) {
-    .library-grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem 1rem; }
+    .library-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem 1rem; }
     .library-item-title { font-size: 0.85rem; }
 }
 
