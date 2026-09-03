@@ -24,6 +24,7 @@
   gap: 1rem;
 }
 .navbar-left { display: flex; align-items: center; gap: 1rem; justify-self: start; }
+.navbar-right { display: flex; align-items: center; justify-self: end; }
 
 .nav-toggle {
   display: flex; flex-direction: column; justify-content: center; align-items: center;
@@ -45,20 +46,9 @@
 .mast-sub { font-family: var(--font-sans); font-size: 0.62rem; font-weight: 600; letter-spacing: 0.28em; text-transform: uppercase; color: var(--lrb-navy); white-space: nowrap; }
 .mast-sub em { font-style: normal; font-weight: 400; letter-spacing: 0.2em; }
 
-.nav-actions { display: flex; align-items: center; gap: 1.1rem; justify-self: end; }
-.signin { font-size: 0.9rem; font-family: var(--font-sans); color: var(--lrb-navy); text-decoration: none; white-space: nowrap; }
-.signin:hover { text-decoration: underline; }
-.btn-subscribe { display: inline-flex; align-items: center; justify-content: center; background: var(--lrb-navy); color: #fff; font-family: var(--font-sans); font-size: 0.88rem; font-weight: 600; padding: 0.55rem 1.3rem; border-radius: 4px; text-decoration: none; border: 1px solid var(--lrb-navy); white-space: nowrap; }
-.btn-subscribe:hover { background: #16233c; border-color: #16233c; color: #fff; text-decoration: none; }
-.btn-subscribe--full { width: 100%; }
-
 .sub-mast { background: var(--lrb-pale); border-top: 1px solid var(--lrb-pale-line); border-bottom: 1px solid var(--lrb-pale-line); }
-.sub-mast-inner { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 52px; padding-top: 0.5rem; padding-bottom: 0.5rem; }
-.sub-mast-title { font-family: var(--font-display); font-size: 1.25rem; font-weight: 500; color: var(--lrb-blue); text-decoration: none; }
-.sub-mast-title:hover { text-decoration: underline; }
-.sub-mast-links { display: flex; align-items: center; gap: 0.7rem; font-family: var(--font-sans); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--lrb-blue); white-space: nowrap; }
-.sub-mast-links a { color: var(--lrb-blue); text-decoration: none; }
-.sub-mast-links a:hover { text-decoration: underline; }
+.sub-mast-inner { display: flex; align-items: center; gap: 1rem; min-height: 52px; padding-top: 0.5rem; padding-bottom: 0.5rem; }
+.sub-mast-title { font-family: var(--font-display); font-size: 1.25rem; font-weight: 500; color: var(--lrb-blue); }
 
 .nav-links {
   position: fixed; top: 0; left: 0; bottom: 0;
@@ -80,23 +70,11 @@
 .nav-links .nav-link--sub { font-size: 0.92rem; font-weight: 400; color: #444; }
 .nav-links .nav-link:hover { text-decoration: underline; }
 .nav-links .nav-link.active { font-weight: 700; }
-.drawer-cta { margin-top: 1.5rem; display: flex; flex-direction: column; gap: 0.8rem; align-items: center; }
-.drawer-cta .nav-link { border: none; padding: 0; text-align: center; }
-.drawer-cta .btn-subscribe { padding: 0.7rem 1rem; }
 
-/* Newsletter + footer navy (specificità alta) */
-#footer .newsletter-band { background: var(--lrb-cream-bar); border-top: 1px solid #e5dcc8; padding: 2.5rem 0; }
-#footer .newsletter-inner { display: flex; align-items: center; justify-content: space-between; gap: 2rem; }
-#footer .newsletter-text h2 { font-family: var(--font-display); font-size: 1.6rem; font-weight: 600; color: var(--ink); margin: 0 0 0.4rem; }
-#footer .newsletter-text p { margin: 0; color: var(--ink-2); font-family: var(--font-body); font-size: 0.95rem; max-width: 34em; }
-#footer .newsletter-form { display: flex; align-items: center; gap: 0.75rem; flex-shrink: 0; }
-#footer .newsletter-form input { border: 1px solid #d8cfba; border-radius: 4px; background: #fff; padding: 0.7rem 1rem; font-size: 0.92rem; font-family: var(--font-sans); min-width: 260px; color: var(--ink); }
-#footer .newsletter-form input:focus { outline: 2px solid var(--lrb-navy); outline-offset: 1px; }
-#footer .newsletter-form button { width: 48px; height: 48px; border-radius: 50%; border: 1px solid #d8cfba; background: #fff; color: var(--lrb-navy); font-size: 1.3rem; line-height: 1; cursor: pointer; flex-shrink: 0; }
-#footer .newsletter-form button:hover { background: var(--lrb-navy); border-color: var(--lrb-navy); color: #fff; }
+/* Footer navy (specificità alta) */
 
 #footer .footer { background: var(--lrb-navy-deep); color: rgba(255,255,255,0.7); border-top: none; padding: 3rem 0 0; margin-top: 0; }
-#footer .footer-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2rem; padding-bottom: 2.5rem; max-width: var(--container-max); margin: 0 auto; padding-left: var(--space-xl); padding-right: var(--space-xl); }
+#footer .footer-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2rem; padding-bottom: 2.5rem; max-width: var(--container-max); margin: 0 auto; padding-left: var(--space-xl); padding-right: var(--space-xl); }
 #footer .footer-col h3 { color: #fff; font-family: var(--font-sans); font-size: 0.8rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; margin: 0 0 1rem; }
 #footer .footer-col .footer-link { display: block; color: rgba(255,255,255,0.7); font-family: var(--font-sans); font-size: 0.9rem; padding: 0.3rem 0; text-decoration: none; border: none; }
 #footer .footer-col .footer-link:hover { color: #fff; text-decoration: underline; }
@@ -113,21 +91,14 @@
 @media (max-width: 1024px) {
   .mast-title { font-size: 1.3rem; }
   .mast-sub { font-size: 0.55rem; letter-spacing: 0.22em; }
-  .nav-actions { gap: 0.8rem; }
-  .btn-subscribe { padding: 0.5rem 1rem; font-size: 0.82rem; }
-  #footer .footer-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  #footer .newsletter-inner { gap: 1.5rem; }
 }
 @media (max-width: 768px) {
-  .nav-search--desktop, .nav-actions { display: none; }
+  .nav-search--desktop { display: none; }
   .nav-search--mobile { display: inline-flex; }
   .navbar .container.navbar-inner { grid-template-columns: auto 1fr auto; }
   .mast-title { font-size: 1.05rem; }
   .mast-sub { display: none; }
   .sub-mast-title { font-size: 1.05rem; }
-  .sub-mast-links { font-size: 0.65rem; gap: 0.5rem; }
-  #footer .newsletter-inner { flex-direction: column; align-items: stretch; }
-  #footer .newsletter-form input { min-width: 0; flex: 1; }
   #footer .footer-grid { grid-template-columns: 1fr; gap: 1.75rem; }
   #footer .footer-bottom-inner { flex-wrap: wrap; gap: 0.9rem; }
   #footer .footer-legal { margin-left: 0; width: 100%; }

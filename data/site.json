@@ -4,22 +4,6 @@
   "description": "Un angolo dedicato agli amanti della lettura, dove ogni libro racconta una storia e ogni recensione è un invito a scoprire nuovi mondi.",
   "author": "Francesca",
   "year": 2025,
-  "social": {
-    "email": {
-      "address": "pagineeparole@email.com",
-      "icon": "📧"
-    },
-    "instagram": {
-      "url": "https://instagram.com/pagineeparole",
-      "username": "pagineeparole",
-      "icon": "📷"
-    },
-    "goodreads": {
-      "url": "https://goodreads.com/pagineeparole",
-      "username": "pagineeparole",
-      "icon": "📚"
-    }
-  },
   "stats": {
     "showOnHome": true
   },
@@ -28,9 +12,7 @@
     "bookId": "il-cardellino"
   },
   "cta": {
-    "title": "Hai un libro da consigliare?",
-    "description": "Mi piace sempre scoprire nuove letture. Scrivimi il tuo consiglio!",
-    "buttonText": "Contattami",
-    "buttonHref": "chi-sono.html#contatti"
+    "title": "Buona lettura",
+    "description": "Questo diario cresce un libro alla volta: parti dalle ultime recensioni o sfoglia la libreria."
   }
 }

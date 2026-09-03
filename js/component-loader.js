@@ -125,9 +125,6 @@ class ComponentLoader {
         const footerData = {
             siteName: siteData?.name || 'Pagine e Parole',
             year: new Date().getFullYear(),
-            email: siteData?.social?.email?.address || '',
-            instagram: siteData?.social?.instagram?.url || '',
-            goodreads: siteData?.social?.goodreads?.url || '',
             ...data
         };
         await this.insertComponent('#footer', 'footer', footerData);

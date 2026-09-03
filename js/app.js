@@ -22,7 +22,7 @@ class App {
         // Sub-masthead title per pagina (stile LRB blog)
         const subMast = document.getElementById('subMastTitle');
         if (subMast) {
-            const titles = { home: 'Pagine e Parole blog', recensioni: 'Recensioni', libro: 'Recensioni', libreria: 'Libreria' };
+            const titles = { home: 'Pagine e Parole blog', recensioni: 'Recensioni', libro: 'Recensioni', libreria: 'Libreria', termini: 'Termini e condizioni', privacy: 'Privacy' };
             subMast.textContent = titles[page] || 'Pagine e Parole blog';
         }
 
@@ -111,10 +111,10 @@ class App {
             chipsContainer.innerHTML = this.renderer.renderGenreChips(genres, counts);
         }
 
-        // CTA box
+        // CTA box (solo testo, niente form finti)
         const ctaContainer = document.getElementById('home-cta');
         if (ctaContainer && site?.cta) {
-            ctaContainer.innerHTML = this.renderer.renderCTA(site.cta, site?.social?.email?.address);
+            ctaContainer.innerHTML = this.renderer.renderCTA(site.cta);
         }
     }
 
@@ -328,11 +328,10 @@ class App {
             return;
         }
 
-        const [book, genres, allBooks, site] = await Promise.all([
+        const [book, genres, allBooks] = await Promise.all([
             this.dataLoader.getBook(bookId),
             this.dataLoader.getGenres(),
-            this.dataLoader.getBooks({ sort: 'date-desc' }).catch(() => []),
-            this.dataLoader.load('site.json').catch(() => null)
+            this.dataLoader.getBooks({ sort: 'date-desc' }).catch(() => [])
         ]);
 
         if (!book) {
@@ -342,14 +341,14 @@ class App {
 
         document.title = `${book.title} - Pagine e Parole`;
 
-        await this.populateBookPage(book, genres, { allBooks, site });
+        await this.populateBookPage(book, genres, { allBooks });
     }
 
     /**
      * Populate book page with data
      */
     async populateBookPage(book, genres, ctx = {}) {
-        const { allBooks = [], site = null } = ctx;
+        const { allBooks = [] } = ctx;
         // Breadcrumb
         const crumbEl = document.getElementById('crumb-title');
         if (crumbEl) crumbEl.textContent = book.title;
@@ -365,14 +364,22 @@ class App {
         const wcEl = document.getElementById('book-wordcount');
         if (wcEl) wcEl.textContent = words ? `${words.toLocaleString('it-IT')} parole · ${Math.max(1, Math.round(words / 200))} min di lettura` : '';
 
-        // Share
+        // Share via email + stampa (niente social)
         const pageUrl = encodeURIComponent(window.location.href);
         const shareText = encodeURIComponent(`${book.title} di ${book.author}`);
         const setHref = (id, href) => { const el = document.getElementById(id); if (el) el.href = href; };
-        setHref('share-facebook', `https://www.facebook.com/sharer/sharer.php?u=${pageUrl}`);
         setHref('share-email', `mailto:?subject=${shareText}&body=${pageUrl}`);
         const printBtn = document.getElementById('share-print');
         if (printBtn) printBtn.addEventListener('click', () => window.print());
+
+        // Dove acquistarlo: Feltrinelli + IBS (ricerca per titolo e autore)
+        const buyEl = document.getElementById('buy-links');
+        if (buyEl) {
+            const q = encodeURIComponent(`${book.title} ${book.author}`);
+            buyEl.innerHTML = `
+                <a class="buy-link" href="https://www.lafeltrinelli.it/catalogsearch/result/?q=${q}" target="_blank" rel="noopener">Cerca su Feltrinelli</a>
+                <a class="buy-link" href="https://www.ibs.it/search/?q=${q}" target="_blank" rel="noopener">Cerca su IBS</a>`;
+        }
 
         // Scheda libro beige
         const cardEl = document.getElementById('book-bookcard');
@@ -508,17 +515,16 @@ class App {
                     : '<li>Nessun articolo correlato.</li>';
             }
             const moreEl = document.getElementById('sidebar-more');
+            const moreTitle = document.getElementById('sidebar-more-title');
             const firstGenre = (book.genres || [])[0];
+            const genreName = (id) => (genres || []).find((g) => g.id === id)?.name || id;
+            if (moreTitle && firstGenre) moreTitle.textContent = `Altro in ${genreName(firstGenre)}`;
             if (moreEl && firstGenre) {
                 const more = ordered.filter(b => b.id !== book.id && (b.genres || []).includes(firstGenre)).slice(0, 4);
                 moreEl.innerHTML = more.length
                     ? more.map(b => `<li><a href="libro.html?id=${b.id}">${b.title}</a><span class="sidebar-list-meta">${b.author}</span></li>`).join('')
                     : '<li>Nessun altro titolo.</li>';
             }
-            const authorBox = document.getElementById('sidebar-author');
-            if (authorBox) authorBox.innerHTML = `<p style="font-size:.92rem;line-height:1.6;color:var(--ink-2)"><strong style="color:var(--ink)">${book.author}</strong></p>`;
-            const emailEl = document.getElementById('sidebar-contact-email');
-            if (emailEl && site?.social?.email?.address) { emailEl.href = `mailto:${site.social.email.address}`; emailEl.textContent = site.social.email.address; }
         } catch (e) {
             console.warn('Related books failed:', e);
         }
