@@ -177,6 +177,8 @@
     .book-grid { gap: 1.5rem 0.85rem; }
     .book-card-title { font-size: 1rem; }
     .book-card-author { font-size: 0.82rem; }
+    /* Un solo genere, piccolo: niente sbordi né troncamenti visibili */
+    .book-card-genres .tag { font-size: 0.6rem; letter-spacing: 0.04em; }
     .book-card-genres .tag:nth-child(n+2) { display: none; }
     .book-card-favorite { font-size: 0.6rem; padding: 0.2rem 0.5rem; }
 }

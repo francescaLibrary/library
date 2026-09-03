@@ -56,7 +56,7 @@
 .latest-reviews { padding: var(--space-3xl) 0; }
 .genres-section { padding: var(--space-2xl) 0 var(--space-3xl); }
 .quote-section { padding: var(--space-3xl) 0; }
-.cta-home { padding: var(--space-2xl) 0 var(--space-3xl); }
+.cta-home { padding: var(--space-3xl) 0; }
 .section-header--center { text-align: center; margin-left: auto; margin-right: auto; }
 
 /* ─── Pagina libro: misura stretta, copertina adattiva ─── */
@@ -108,9 +108,12 @@
 .book-single-details-value { color: var(--ink); font-size: 0.95rem; }
 @media (max-width: 900px) { .book-single-grid { grid-template-columns: minmax(0, 200px) minmax(0, 1fr); gap: 2rem; } }
 @media (max-width: 768px) {
-    .book-single-grid { grid-template-columns: minmax(0, 1fr); gap: 1.75rem; }
-    .book-single-cover { position: static; max-width: none; }
-    #book-cover { max-width: 190px; }
+    /* Colonna unica con ordine: cover → contenuto → dettagli (dopo gli hashtag) */
+    .book-single-grid { display: flex; flex-direction: column; gap: 0; }
+    .book-single-cover { display: contents; }
+    #book-cover { order: 1; max-width: 250px; margin-bottom: 1.75rem; }
+    .book-single-content { order: 2; min-width: 0; }
+    .book-single-details { order: 3; margin-top: 2.25rem; }
     .book-single-details-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
     .book-single-review-text { font-size: 1.1rem; }
 }
