@@ -1,20 +1,59 @@
-<nav class="navbar">
-    <div class="container">
-        <a href="index.html" class="nav-logo">
-            <span class="nav-logo-mark">P.</span>
-            <span class="nav-logo-text">Pagine e Parole</span>
-        </a>
-
-        <button class="nav-toggle" aria-label="Menu" aria-expanded="false">
-            <span></span>
-            <span></span>
-            <span></span>
+<header class="lrb">
+  <nav class="navbar" aria-label="Navigazione principale">
+    <div class="container navbar-inner">
+      <div class="navbar-left">
+        <button class="nav-toggle" aria-label="Apri menu" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
         </button>
-
-        <div class="nav-links">
-            <a href="index.html" class="nav-link" data-page="home">Home</a>
-            <a href="recensioni.html" class="nav-link" data-page="recensioni">Recensioni</a>
-            <a href="libreria.html" class="nav-link" data-page="libreria">Libreria</a>
-        </div>
+        <a class="nav-search nav-search--desktop" href="recensioni.html" aria-label="Cerca nelle recensioni">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/></svg>
+          <span>Search</span>
+        </a>
+      </div>
+      <a href="index.html" class="masthead" aria-label="Pagine e Parole - Home">
+        <span class="mast-title">Pagine e Parole</span>
+        <span class="mast-sub">DIARIO <em>di</em> LETTURA</span>
+      </a>
+      <div class="nav-actions">
+        <a href="#newsletter" class="signin">Accedi</a>
+        <a href="#newsletter" class="btn-subscribe">Iscriviti</a>
+      </div>
+      <a class="nav-search nav-search--mobile" href="recensioni.html" aria-label="Cerca">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/></svg>
+      </a>
     </div>
-</nav>
+  </nav>
+  <div class="sub-mast">
+    <div class="container sub-mast-inner">
+      <a href="index.html" class="sub-mast-title" id="subMastTitle">Pagine e Parole blog</a>
+      <div class="sub-mast-links">
+        <a href="recensioni.html">Generi</a>
+        <span aria-hidden="true">|</span>
+        <a href="libreria.html">Archivio</a>
+      </div>
+    </div>
+  </div>
+  <div class="nav-links" aria-label="Menu">
+    <div class="drawer-inner">
+      <p class="drawer-label">Menu</p>
+      <a href="index.html" class="nav-link" data-page="home">Home</a>
+      <a href="recensioni.html" class="nav-link" data-page="recensioni">Recensioni</a>
+      <a href="libreria.html" class="nav-link" data-page="libreria">Libreria</a>
+      <div class="drawer-sep"></div>
+      <p class="drawer-label">About</p>
+      <a href="index.html" class="nav-link nav-link--sub">Chi sono</a>
+      <a href="recensioni.html" class="nav-link nav-link--sub">Metodo di lettura</a>
+      <a href="libreria.html" class="nav-link nav-link--sub">Archivio libri</a>
+      <div class="drawer-sep"></div>
+      <p class="drawer-label">Aiuto</p>
+      <a href="recensioni.html" class="nav-link nav-link--sub">Come cercare</a>
+      <a href="libreria.html" class="nav-link nav-link--sub">Archivio libri</a>
+      <div class="drawer-cta">
+        <a href="#newsletter" class="btn-subscribe btn-subscribe--full nav-link">Iscriviti</a>
+        <a href="#newsletter" class="signin nav-link">Accedi</a>
+      </div>
+    </div>
+  </div>
+</header>

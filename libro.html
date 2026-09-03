@@ -5,23 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Recensione libro - Pagine e Parole">
     <title>Recensione - Pagine e Parole</title>
-    
-    <!-- CSS -->
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/navigation.css">
     <link rel="stylesheet" href="css/components.css">
     <link rel="stylesheet" href="css/pages.css">
-    
-    <!-- Favicon -->
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='18' fill='%231C1917'/%3E%3Ctext x='50' y='68' font-size='58' text-anchor='middle' fill='%23FCFBF7' font-family='Georgia' font-style='italic'%3EP.%3C/text%3E%3C/svg%3E">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='18' fill='%231e2f4e'/%3E%3Ctext x='50' y='68' font-size='58' text-anchor='middle' fill='%23ffffff' font-family='Georgia' font-style='italic'%3EP.%3C/text%3E%3C/svg%3E">
 </head>
 <body data-page="libro">
-    <!-- Navbar -->
     <div id="navbar"></div>
-    
-    <!-- Book Content -->
+
     <section class="book-single">
-        <div class="container">
+        <div class="container container-lrb">
             <a href="recensioni.html" class="back-link">← Torna alle recensioni</a>
             <nav class="breadcrumb" aria-label="Percorso">
                 <a href="index.html">Home</a>
@@ -30,78 +24,100 @@
                 <span class="breadcrumb-sep">/</span>
                 <span class="breadcrumb-current" id="crumb-title">…</span>
             </nav>
-            <div class="book-single-grid">
-                <!-- Cover + details -->
-                <aside class="book-single-cover">
-                    <div id="book-cover">
-                        <div class="loading">Caricamento...</div>
-                    </div>
-                    <div class="book-single-details">
-                        <h3 class="book-single-details-title">Dettagli</h3>
-                        <div class="book-single-details-grid" id="book-details">
-                            <div class="loading">Caricamento dettagli...</div>
-                        </div>
-                    </div>
-                </aside>
-                
-                <!-- Content -->
-                <article class="book-single-content">
-                    <!-- Header -->
+
+            <div class="book-single-layout">
+                <main class="book-single-main">
                     <header class="book-single-header">
+                        <p class="book-single-kicker" id="book-kicker">Recensione</p>
                         <h1 class="book-single-title" id="book-title">Caricamento...</h1>
                         <p class="book-single-author" id="book-author"></p>
-
+                        <p class="book-single-date" id="book-date"></p>
                         <div class="book-meta" id="book-meta"></div>
-
-                        <div class="book-single-rating" id="book-rating">
-                            <!-- Rating will be inserted here -->
+                        <div class="book-single-share" aria-label="Condividi">
+                            <a id="share-facebook" href="#" target="_blank" rel="noopener" aria-label="Condividi su Facebook">f</a>
+                            <a id="share-email" href="#" aria-label="Condividi via email">✉</a>
+                            <button id="share-print" type="button" aria-label="Stampa">⎙</button>
                         </div>
-                        
-                        <div class="book-single-genres tags" id="book-genres">
-                            <!-- Genres will be inserted here -->
-                        </div>
+                        <p class="book-single-wordcount" id="book-wordcount"></p>
                     </header>
-                    
-                    <!-- Review -->
+
+                    <aside class="book-single-bookcard" id="book-bookcard" aria-label="Scheda del libro"></aside>
+
+                    <figure class="book-single-figure">
+                        <div id="book-cover"><div class="loading">Caricamento...</div></div>
+                        <figcaption class="book-single-caption" id="book-caption"></figcaption>
+                    </figure>
+
+                    <div class="book-single-rating" id="book-rating"></div>
+                    <div class="book-single-genres tags" id="book-genres"></div>
+
                     <section class="book-single-review">
-                        <h2 class="book-single-review-title">Recensione</h2>
                         <div class="book-single-review-text" id="book-review">
                             <div class="loading">Caricamento recensione...</div>
                         </div>
                     </section>
-                    
-                    <!-- Quotes -->
+
                     <section class="book-single-quotes" id="quotes-section">
                         <h2 class="book-single-quotes-title">Passi scelti</h2>
-                        <div class="book-single-quotes-list" id="book-quotes">
-                            <!-- Quotes will be inserted here -->
-                        </div>
+                        <div class="book-single-quotes-list" id="book-quotes"></div>
                     </section>
-                    
-                    <!-- Tags -->
-                    <section>
-                        <div class="tags" id="book-tags">
-                            <!-- Tags will be inserted here -->
-                        </div>
-                    </section>
-                </article>
-            </div>
 
-            <!-- Related -->
-            <section class="related" id="related-section" style="display:none;">
-                <div class="section-header">
-                    <span class="section-eyebrow">Continua a leggere</span>
-                    <h2 class="section-title" style="font-size:1.6rem;">Potrebbe piacerti anche</h2>
-                </div>
-                <div class="book-grid" id="related-books"></div>
-            </section>
+                    <div class="tags book-single-tags" id="book-tags"></div>
+
+                    <nav class="book-single-prevnext" aria-label="Navigazione articoli">
+                        <a class="prevnext-card prevnext-prev" id="prev-post" href="recensioni.html">
+                            <span class="prevnext-label">← Previous Post</span>
+                            <span class="prevnext-title"></span>
+                            <span class="prevnext-excerpt"></span>
+                        </a>
+                        <a class="prevnext-home" href="index.html" aria-label="Torna alla home">⌂</a>
+                        <a class="prevnext-card prevnext-next" id="next-post" href="recensioni.html">
+                            <span class="prevnext-label">Next Post →</span>
+                            <span class="prevnext-title"></span>
+                            <span class="prevnext-excerpt"></span>
+                        </a>
+                    </nav>
+
+                    <section class="related" id="related-section" style="display:none;">
+                        <div class="section-header">
+                            <span class="section-eyebrow">Continua a leggere</span>
+                            <h2 class="section-title" style="font-size:1.6rem;">Potrebbe piacerti anche</h2>
+                        </div>
+                        <div class="book-grid lrb-grid" id="related-books"></div>
+                    </section>
+                </main>
+
+                <aside class="book-single-sidebar" aria-label="Approfondimenti">
+                    <div class="sidebar-box">
+                        <h3 class="sidebar-box-title">Dettagli</h3>
+                        <div class="book-single-details-grid" id="book-details">
+                            <div class="loading">Caricamento dettagli...</div>
+                        </div>
+                    </div>
+                    <div class="sidebar-box" id="sidebar-author-box">
+                        <h3 class="sidebar-box-title">L'autore</h3>
+                        <div id="sidebar-author"></div>
+                    </div>
+                    <div class="sidebar-box">
+                        <h3 class="sidebar-box-title">Related Articles</h3>
+                        <ul class="sidebar-list" id="sidebar-related"></ul>
+                    </div>
+                    <div class="sidebar-box">
+                        <h3 class="sidebar-box-title" id="sidebar-more-title">More from this genre</h3>
+                        <ul class="sidebar-list" id="sidebar-more"></ul>
+                    </div>
+                    <div class="sidebar-box sidebar-box--contact">
+                        <h3 class="sidebar-box-title">Contact</h3>
+                        <p class="sidebar-contact-text">Ti è piaciuta la recensione? Scrivimi.</p>
+                        <a id="sidebar-contact-email" href="mailto:">Email</a>
+                    </div>
+                </aside>
+            </div>
         </div>
     </section>
-    
-    <!-- Footer -->
+
     <div id="footer"></div>
-    
-    <!-- JavaScript -->
+
     <script src="js/data-loader.js"></script>
     <script src="js/template-renderer.js"></script>
     <script src="js/component-loader.js"></script>

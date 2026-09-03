@@ -19,21 +19,26 @@
     <!-- Navbar -->
     <div id="navbar"></div>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <p class="hero-tagline">Un viaggio tra le pagine</p>
-                <h1 class="hero-title">Pagine <em>e</em> Parole</h1>
-                <p class="hero-description">
-                    Recensioni sincere, riflessioni e consigli — un diario di lettura
-                    per chi ama perdersi nei libri.
-                </p>
-                <div class="hero-buttons">
-                    <a href="recensioni.html" class="btn btn-primary">Scopri le recensioni</a>
-                    <a href="libreria.html" class="link-arrow">Sfoglia la libreria →</a>
-                </div>
+    <!-- Masthead LRB -->
+    <section class="lrb-masthead">
+        <div class="container container-narrow">
+            <p class="lrb-masthead-eyebrow">Un viaggio tra le pagine</p>
+            <h1 class="lrb-masthead-title">Pagine <em>e</em> Parole</h1>
+            <p class="lrb-masthead-sub">
+                Recensioni sincere, riflessioni e consigli — un diario di lettura
+                per chi ama perdersi nei libri.
+            </p>
+            <div class="lrb-masthead-links">
+                <a href="recensioni.html" class="btn btn-primary">Scopri le recensioni</a>
+                <a href="libreria.html" class="link-arrow">Sfoglia la libreria →</a>
             </div>
+        </div>
+    </section>
+
+    <!-- Featured 2-col su fondo sky -->
+    <section class="lrb-featured" aria-label="In evidenza">
+        <div class="container">
+            <div id="lrb-featured-slot"><div class="loading">Caricamento...</div></div>
         </div>
     </section>
 
@@ -46,15 +51,17 @@
         </div>
     </section>
 
-    <!-- Latest Reviews -->
-    <section class="latest-reviews section">
+    <!-- Latest Reviews LRB -->
+    <section class="lrb-listing section">
         <div class="container">
-            <div class="section-header">
-                <span class="section-eyebrow">Dal diario</span>
-                <h2 class="section-title">Ultime recensioni</h2>
-                <p class="section-subtitle">Le letture più recenti</p>
+            <div class="lrb-listing-head">
+                <div>
+                    <span class="lrb-kicker">Dal diario</span>
+                    <h2 class="lrb-listing-title">Ultime recensioni</h2>
+                </div>
+                <a href="recensioni.html" class="link-arrow">Tutte le recensioni →</a>
             </div>
-            <div class="book-grid" id="latest-reviews">
+            <div class="book-grid lrb-grid" id="latest-reviews">
                 <div class="loading">Caricamento recensioni...</div>
             </div>
             <div class="mt-2xl">

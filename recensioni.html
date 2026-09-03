@@ -19,12 +19,16 @@
     <!-- Navbar -->
     <div id="navbar"></div>
     
-    <!-- Page Header -->
-    <header class="page-header">
-        <div class="container">
+    <!-- Page Header LRB -->
+    <header class="page-header page-header--center">
+        <div class="container container-narrow">
             <span class="section-eyebrow">Diario di lettura</span>
             <h1 class="page-header-title">Recensioni</h1>
             <p class="page-header-subtitle">Tutti i libri letti, con note sincere</p>
+            <div class="lrb-tabs" role="tablist" aria-label="Filtra recensioni">
+                <button class="lrb-tab is-active" data-tab="latest" role="tab" aria-selected="true">Latest</button>
+                <button class="lrb-tab" data-tab="best" role="tab" aria-selected="false">Best of</button>
+            </div>
         </div>
     </header>
     
@@ -78,8 +82,8 @@
                 </div>
             </div>
             
-            <!-- Books Grid -->
-            <div class="book-grid" id="books-grid">
+            <!-- Books Grid LRB -->
+            <div class="book-grid lrb-grid" id="books-grid">
                 <div class="loading">Caricamento libri...</div>
             </div>
         </div>

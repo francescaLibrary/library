@@ -14,6 +14,32 @@ class TemplateRenderer {
         };
     }
 
+    esc(s) {
+        return String(s ?? '')
+            .replace(/&/g, '&amp;').replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    }
+
+    formatDateLRB(dateStr) {
+        if (!dateStr) return '';
+        const MONTHS_EN = ['JANUARY','FEBRUARY','MARCH','APRIL','MAY','JUNE','JULY','AUGUST','SEPTEMBER','OCTOBER','NOVEMBER','DECEMBER'];
+        const [y, m, d] = dateStr.split('-').map(Number);
+        if (!y || !m) return dateStr;
+        const day = d ? `${String(d).padStart(2, '0')} ` : '';
+        return `${day}${MONTHS_EN[m - 1]} ${y}`;
+    }
+
+    lrbExcerpt(book, max = 150) {
+        const first = String(book.review || '').split('\n').map(s => s.trim()).find(Boolean) || '';
+        return first.length > max ? first.slice(0, max).trimEnd() + '…' : first;
+    }
+
+    lrbKicker(book, genres = []) {
+        const g = genres.find(x => x.id === (book.genres || [])[0]);
+        if (book.favorite) return 'Scelta della redazione';
+        return g ? g.name : 'Recensione';
+    }
+
     renderRating(rating, size = 'normal') {
         const stars = [];
         for (let i = 1; i <= 5; i++) {
@@ -54,23 +80,24 @@ class TemplateRenderer {
     }
 
     renderBookCard(book, genres = []) {
+        const date = this.formatDateLRB(book.dateRead);
         return `
-            <a href="libro.html?id=${book.id}" class="book-card">
-                <div class="book-card-cover">
-                    ${this.renderBookCover(book)}
-                    ${book.favorite ? '<span class="book-card-favorite">Preferito</span>' : ''}
+            <a href="libro.html?id=${book.id}" class="lrb-card" data-rating="${book.rating}">
+                <div class="lrb-card-media">
+                    <img src="${book.cover}" alt="Copertina di ${this.esc(book.title)}"
+                         width="400" height="600" loading="lazy" decoding="async"
+                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="lrb-card-placeholder" style="display:none;">
+                        <span>${this.esc(book.title)}</span>
+                    </div>
                 </div>
-                <div class="book-card-body">
-                    <h3 class="book-card-title">${book.title}</h3>
-                    <p class="book-card-author">${book.author}</p>
-                    <div class="book-card-meta">
-                        <div class="book-card-rating">
-                            ${this.renderRating(book.rating)}
-                        </div>
-                    </div>
-                    <div class="book-card-genres">
-                        ${this.renderGenreTags(book.genres?.slice(0, 2), genres)}
-                    </div>
+                <div class="lrb-card-body">
+                    <p class="lrb-kicker">${this.esc(this.lrbKicker(book, genres))}</p>
+                    <h3 class="lrb-card-title">${this.esc(book.title)}</h3>
+                    <p class="lrb-card-author">di ${this.esc(book.author)}</p>
+                    ${date ? `<p class="lrb-card-date">${date}</p>` : ''}
+                    <p class="lrb-card-excerpt">${this.esc(this.lrbExcerpt(book))}</p>
+                    <p class="lrb-card-vote">Voto ${book.rating}/5 — ${this.ratingLabels[book.rating] || ''}</p>
                 </div>
             </a>
         `;
@@ -89,26 +116,24 @@ class TemplateRenderer {
     }
 
     renderFeaturedBook(book, genres = []) {
-        const excerpt = (book.review || '').split('\n')[0];
+        const date = this.formatDateLRB(book.dateRead);
         return `
-            <div class="featured-book-card">
-                <div class="featured-book-cover">
-                    <img src="${book.cover}"
-                          alt="Copertina di ${book.title}"
-                          width="400" height="600"
-                          loading="lazy" decoding="async"
-                          onerror="this.parentElement.innerHTML='<div class=\\'book-card-cover-placeholder\\' style=\\'height:100%;display:flex;\\'><span class=\\'title\\'>${book.title}</span></div>';">
+            <div class="lrb-featured-grid">
+                <div class="lrb-featured-text">
+                    <p class="lrb-kicker">Latest</p>
+                    <h2 class="lrb-featured-title">${this.esc(book.title)}</h2>
+                    <p class="lrb-featured-author">di ${this.esc(book.author)}</p>
+                    ${date ? `<p class="lrb-featured-date">${date}</p>` : ''}
+                    <p class="lrb-featured-excerpt">${this.esc(this.lrbExcerpt(book, 220))}</p>
+                    <a class="lrb-circle-btn" href="libro.html?id=${book.id}"
+                       aria-label="Leggi la recensione di ${this.esc(book.title)}">&gt;</a>
                 </div>
-                <div class="featured-book-body">
-                    <span class="featured-book-badge">Libro del mese</span>
-                    <h2 class="featured-book-title">${book.title}</h2>
-                    <p class="featured-book-author">${book.author}</p>
-                    <p class="featured-book-excerpt">${excerpt}</p>
-                    <div class="featured-book-footer">
-                        <div class="book-card-rating">
-                            ${this.renderRatingWithLabel(book.rating)}
-                        </div>
-                        <a href="libro.html?id=${book.id}" class="btn btn-primary">Leggi la recensione</a>
+                <div class="lrb-featured-media">
+                    <img src="${book.cover}" alt="Copertina di ${this.esc(book.title)}"
+                         width="400" height="600" loading="lazy" decoding="async"
+                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="lrb-card-placeholder" style="display:none;">
+                        <span>${this.esc(book.title)}</span>
                     </div>
                 </div>
             </div>
@@ -138,19 +163,17 @@ class TemplateRenderer {
 
     renderLibraryItem(book) {
         return `
-            <a href="libro.html?id=${book.id}" class="library-item" aria-label="${book.title} di ${book.author}">
-                <img src="${book.cover}"
-                      alt="Copertina di ${book.title}"
-                      width="400" height="600"
-                      loading="lazy" decoding="async"
-                      onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                <div class="library-item-placeholder" style="display: none;">${(book.title || 'P').charAt(0)}</div>
-                <div class="library-item-overlay">
-                    <span class="library-item-title">${book.title}</span>
-                    <div class="library-item-rating">
-                        ${this.renderRating(book.rating, 'small')}
-                    </div>
-                </div>
+            <a href="libro.html?id=${book.id}" class="lrb-shelf-item" aria-label="${this.esc(book.title)} di ${this.esc(book.author)}">
+                <span class="lrb-shelf-cover">
+                    <img src="${book.cover}" alt="Copertina di ${this.esc(book.title)}"
+                         width="400" height="600" loading="lazy" decoding="async"
+                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <span class="lrb-card-placeholder" style="display:none;">
+                        <span>${this.esc((book.title || 'P').charAt(0))}</span>
+                    </span>
+                </span>
+                <span class="lrb-shelf-title">${this.esc(book.title)}</span>
+                <span class="lrb-shelf-author">${this.esc(book.author)}</span>
             </a>
         `;
     }
@@ -168,13 +191,10 @@ class TemplateRenderer {
 
     renderQuote(quote, title, author) {
         return `
-            <div class="quote-card">
-                <p class="quote-text">“${quote}”</p>
-                <div class="quote-source">
-                    <span class="quote-source-title">${title}</span>
-                    <span>— ${author}</span>
-                </div>
-            </div>
+            <blockquote class="lrb-quote">
+                <p class="lrb-quote-text">"${quote}"</p>
+                <cite class="lrb-quote-source">${title} — ${author}</cite>
+            </blockquote>
         `;
     }
 
@@ -220,6 +240,7 @@ class TemplateRenderer {
         if (book.pages) parts.push(`<span><strong>${book.pages}</strong> pagine</span>`);
         if (book.publisher) parts.push(`<span>${book.publisher}</span>`);
         if (book.dateRead) parts.push(`<span>Letto nel <strong>${this.formatDate(book.dateRead)}</strong></span>`);
+        if (book.rating) parts.push(`<span>Voto <strong>${book.rating}/5</strong></span>`);
         return parts.join('<span aria-hidden="true">·</span>');
     }
 

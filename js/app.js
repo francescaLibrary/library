@@ -19,6 +19,13 @@ class App {
         // Load common components
         await this.componentLoader.loadAllComponents(page);
 
+        // Sub-masthead title per pagina (stile LRB blog)
+        const subMast = document.getElementById('subMastTitle');
+        if (subMast) {
+            const titles = { home: 'Pagine e Parole blog', recensioni: 'Recensioni', libro: 'Recensioni', libreria: 'Libreria' };
+            subMast.textContent = titles[page] || 'Pagine e Parole blog';
+        }
+
         // Initialize page-specific content
         switch (page) {
             case 'home':
@@ -73,6 +80,12 @@ class App {
         const latestContainer = document.getElementById('latest-reviews');
         if (latestContainer) {
             latestContainer.innerHTML = this.renderer.renderBookGrid(latestBooks, genres);
+        }
+
+        // LRB featured: il più recente in evidenza su fondo sky
+        const featuredSlot = document.getElementById('lrb-featured-slot');
+        if (featuredSlot && latestBooks.length > 0) {
+            featuredSlot.innerHTML = this.renderer.renderFeaturedBook(latestBooks[0], genres);
         }
 
         // Random quote from favorites
@@ -203,6 +216,33 @@ class App {
                 timeout = setTimeout(() => this.loadFilteredBooks(), 300);
             });
         }
+
+        // LRB tabs Latest / Best of
+        document.querySelectorAll('.lrb-tab').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.lrb-tab').forEach(b => {
+                    b.classList.remove('is-active');
+                    b.setAttribute('aria-selected', 'false');
+                });
+                btn.classList.add('is-active');
+                btn.setAttribute('aria-selected', 'true');
+                const sort = document.getElementById('filter-sort');
+                const rating = document.getElementById('filter-rating');
+                if (btn.dataset.tab === 'best') {
+                    if (sort) sort.value = 'rating-desc';
+                    if (sort) sort.dispatchEvent(new Event('change'));
+                    setTimeout(() => {
+                        document.querySelectorAll('#books-grid .lrb-card').forEach(c => {
+                            c.style.display = Number(c.dataset.rating) >= 4 ? '' : 'none';
+                        });
+                    }, 100);
+                } else {
+                    if (sort) sort.value = 'date-desc';
+                    if (rating) rating.value = '';
+                    if (sort) sort.dispatchEvent(new Event('change'));
+                }
+            });
+        });
     }
 
     /**
@@ -280,7 +320,6 @@ class App {
      * Initialize single book page
      */
     async initLibroPage() {
-        // Get book ID from URL
         const params = new URLSearchParams(window.location.search);
         const bookId = params.get('id');
 
@@ -289,9 +328,11 @@ class App {
             return;
         }
 
-        const [book, genres] = await Promise.all([
+        const [book, genres, allBooks, site] = await Promise.all([
             this.dataLoader.getBook(bookId),
-            this.dataLoader.getGenres()
+            this.dataLoader.getGenres(),
+            this.dataLoader.getBooks({ sort: 'date-desc' }).catch(() => []),
+            this.dataLoader.load('site.json').catch(() => null)
         ]);
 
         if (!book) {
@@ -299,20 +340,52 @@ class App {
             return;
         }
 
-        // Update page title
         document.title = `${book.title} - Pagine e Parole`;
 
-        // Populate book data
-        await this.populateBookPage(book, genres);
+        await this.populateBookPage(book, genres, { allBooks, site });
     }
 
     /**
      * Populate book page with data
      */
-    async populateBookPage(book, genres) {
+    async populateBookPage(book, genres, ctx = {}) {
+        const { allBooks = [], site = null } = ctx;
         // Breadcrumb
         const crumbEl = document.getElementById('crumb-title');
         if (crumbEl) crumbEl.textContent = book.title;
+
+        // Kicker + data stile LRB
+        const kickerEl = document.getElementById('book-kicker');
+        if (kickerEl) kickerEl.textContent = 'Recensione';
+        const dateEl = document.getElementById('book-date');
+        if (dateEl && this.renderer.formatDateLRB) dateEl.textContent = this.renderer.formatDateLRB(book.dateRead);
+
+        // Word count
+        const words = (book.review || '').split(/\s+/).filter(Boolean).length;
+        const wcEl = document.getElementById('book-wordcount');
+        if (wcEl) wcEl.textContent = words ? `${words.toLocaleString('it-IT')} parole · ${Math.max(1, Math.round(words / 200))} min di lettura` : '';
+
+        // Share
+        const pageUrl = encodeURIComponent(window.location.href);
+        const shareText = encodeURIComponent(`${book.title} di ${book.author}`);
+        const setHref = (id, href) => { const el = document.getElementById(id); if (el) el.href = href; };
+        setHref('share-facebook', `https://www.facebook.com/sharer/sharer.php?u=${pageUrl}`);
+        setHref('share-email', `mailto:?subject=${shareText}&body=${pageUrl}`);
+        const printBtn = document.getElementById('share-print');
+        if (printBtn) printBtn.addEventListener('click', () => window.print());
+
+        // Scheda libro beige
+        const cardEl = document.getElementById('book-bookcard');
+        if (cardEl) {
+            cardEl.innerHTML = `
+                <div><dt>Editore</dt><dd>${book.publisher || 'N/D'}</dd></div>
+                <div><dt>Pagine</dt><dd>${book.pages || 'N/D'}</dd></div>
+                <div><dt>Anno</dt><dd>${book.year || 'N/D'}</dd></div>`;
+        }
+
+        // Caption
+        const captionEl = document.getElementById('book-caption');
+        if (captionEl) captionEl.textContent = `Copertina di ${book.title}${book.publisher ? `, ${book.publisher}` : ''}${book.year ? ` ${book.year}` : ''}.`;
 
         // Cover
         const coverContainer = document.getElementById('book-cover');
@@ -398,10 +471,26 @@ class App {
             ).join('');
         }
 
-        // Related books (shared genres, excluding self)
+        // Related books (shared genres, excluding self) + prev/next + sidebar
         try {
-            const allBooks = await this.dataLoader.getBooks({});
-            const related = allBooks
+            const ordered = [...allBooks].sort((a, b) => String(b.dateRead).localeCompare(String(a.dateRead)));
+            const idx = ordered.findIndex(b => b.id === book.id);
+            const prev = idx >= 0 ? ordered[idx + 1] : null;
+            const next = idx > 0 ? ordered[idx - 1] : null;
+            const fillCard = (id, item) => {
+                const el = document.getElementById(id);
+                if (!el) return;
+                if (!item) { el.style.display = 'none'; return; }
+                el.href = `libro.html?id=${item.id}`;
+                const t = el.querySelector('.prevnext-title');
+                const e = el.querySelector('.prevnext-excerpt');
+                if (t) t.textContent = item.title;
+                if (e) e.textContent = String(item.review || '').split('\n')[0].slice(0, 140);
+            };
+            fillCard('prev-post', prev);
+            fillCard('next-post', next);
+
+            const related = ordered
                 .filter(b => b.id !== book.id && (b.genres || []).some(g => (book.genres || []).includes(g)))
                 .slice(0, 3);
             const relatedSection = document.getElementById('related-section');
@@ -410,6 +499,26 @@ class App {
                 relatedContainer.innerHTML = this.renderer.renderBookGrid(related, genres);
                 relatedSection.style.display = '';
             }
+
+            const relEl = document.getElementById('sidebar-related');
+            if (relEl) {
+                const rel = ordered.filter(b => b.id !== book.id && (b.genres || []).some(g => (book.genres || []).includes(g))).slice(0, 4);
+                relEl.innerHTML = rel.length
+                    ? rel.map(b => `<li><a href="libro.html?id=${b.id}">${b.title}</a><span class="sidebar-list-meta">${b.author}</span></li>`).join('')
+                    : '<li>Nessun articolo correlato.</li>';
+            }
+            const moreEl = document.getElementById('sidebar-more');
+            const firstGenre = (book.genres || [])[0];
+            if (moreEl && firstGenre) {
+                const more = ordered.filter(b => b.id !== book.id && (b.genres || []).includes(firstGenre)).slice(0, 4);
+                moreEl.innerHTML = more.length
+                    ? more.map(b => `<li><a href="libro.html?id=${b.id}">${b.title}</a><span class="sidebar-list-meta">${b.author}</span></li>`).join('')
+                    : '<li>Nessun altro titolo.</li>';
+            }
+            const authorBox = document.getElementById('sidebar-author');
+            if (authorBox) authorBox.innerHTML = `<p style="font-size:.92rem;line-height:1.6;color:var(--ink-2)"><strong style="color:var(--ink)">${book.author}</strong></p>`;
+            const emailEl = document.getElementById('sidebar-contact-email');
+            if (emailEl && site?.social?.email?.address) { emailEl.href = `mailto:${site.social.email.address}`; emailEl.textContent = site.social.email.address; }
         } catch (e) {
             console.warn('Related books failed:', e);
         }

@@ -1,14 +1,46 @@
-<footer class="footer">
-    <div class="container">
-        <div class="footer-content">
-            <div class="footer-brand">
-                <span class="footer-brand-text">Pagine e Parole</span>
-            </div>
-            <p class="footer-text">© {{year}} {{siteName}} — Diario di lettura.</p>
-            <div class="footer-links">
-                <a class="footer-link" href="recensioni.html">Recensioni</a>
-                <a class="footer-link" href="libreria.html">Libreria</a>
-            </div>
-        </div>
+<section class="newsletter-band" id="newsletter" aria-label="Newsletter">
+  <div class="container newsletter-inner">
+    <div class="newsletter-text">
+      <h2>Iscriviti alle nostre newsletter</h2>
+      <p>Una volta al mese: nuove recensioni, riletture e note dal diario di lettura. Niente spam.</p>
     </div>
+    <form class="newsletter-form" action="#" onsubmit="return false;">
+      <label class="sr-only" for="nl-email">Indirizzo email</label>
+      <input id="nl-email" type="email" name="email" required placeholder="Il tuo indirizzo email" autocomplete="email">
+      <button type="submit" aria-label="Iscriviti alla newsletter">&rarr;</button>
+    </form>
+  </div>
+</section>
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-col">
+      <h3>About</h3>
+      <a class="footer-link" href="index.html">Chi sono</a>
+      <a class="footer-link" href="recensioni.html">Tutte le recensioni</a>
+      <a class="footer-link" href="libreria.html">Archivio libri</a>
+    </div>
+    <div class="footer-col">
+      <h3>Aiuto</h3>
+      <a class="footer-link" href="recensioni.html">Cerca per genere</a>
+      <a class="footer-link" href="libreria.html">Archivio libri</a>
+      <a class="footer-link" href="recensioni.html">Come cercare</a>
+    </div>
+    <div class="footer-col">
+      <h3>Seguici</h3>
+      <a class="footer-link" href="{{instagram}}" target="_blank" rel="noopener">Instagram</a>
+      <a class="footer-link" href="{{goodreads}}" target="_blank" rel="noopener">Goodreads</a>
+      <a class="footer-link" href="mailto:{{email}}">Email</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-bottom-inner">
+      <span class="footer-mark" aria-hidden="true">P&amp;P</span>
+      <p class="footer-text">&copy; {{year}} {{siteName}} &mdash; Diario di lettura.</p>
+      <div class="footer-legal">
+        <a class="footer-link" href="#">Termini e condizioni</a>
+        <a class="footer-link" href="#">Privacy</a>
+      </div>
+      <button class="to-top" type="button" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Torna in alto">&uarr;</button>
+    </div>
+  </div>
 </footer>
