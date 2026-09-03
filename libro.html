@@ -22,6 +22,7 @@
     <!-- Book Content -->
     <section class="book-single">
         <div class="container">
+            <a href="recensioni.html" class="back-link">← Torna alle recensioni</a>
             <nav class="breadcrumb" aria-label="Percorso">
                 <a href="index.html">Home</a>
                 <span class="breadcrumb-sep">/</span>
@@ -30,9 +31,17 @@
                 <span class="breadcrumb-current" id="crumb-title">…</span>
             </nav>
             <div class="book-single-grid">
-                <!-- Cover -->
-                <aside class="book-single-cover" id="book-cover">
-                    <div class="loading">Caricamento...</div>
+                <!-- Cover + details -->
+                <aside class="book-single-cover">
+                    <div id="book-cover">
+                        <div class="loading">Caricamento...</div>
+                    </div>
+                    <div class="book-single-details">
+                        <h3 class="book-single-details-title">Dettagli</h3>
+                        <div class="book-single-details-grid" id="book-details">
+                            <div class="loading">Caricamento dettagli...</div>
+                        </div>
+                    </div>
                 </aside>
                 
                 <!-- Content -->
@@ -70,24 +79,11 @@
                     </section>
                     
                     <!-- Tags -->
-                    <section class="mb-xl">
+                    <section>
                         <div class="tags" id="book-tags">
                             <!-- Tags will be inserted here -->
                         </div>
                     </section>
-                    
-                    <!-- Details -->
-                    <aside class="book-single-details">
-                        <h3 class="book-single-details-title">Dettagli</h3>
-                        <div class="book-single-details-grid" id="book-details">
-                            <div class="loading">Caricamento dettagli...</div>
-                        </div>
-                    </aside>
-                    
-                    <!-- Back Link -->
-                    <div class="mt-xl">
-                        <a href="recensioni.html" class="btn btn-secondary">← Torna alle recensioni</a>
-                    </div>
                 </article>
             </div>
 

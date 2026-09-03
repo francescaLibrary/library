@@ -51,18 +51,18 @@
 
 /* ─── Sezioni home ─── */
 .book-of-month { padding: var(--space-2xl) 0; }
-/* Specificità maggiore di .section--dark: il fondo scuro deve vincere */
-.book-of-month.section--dark { background: var(--ink-deep); color: #EDE8DE; padding: var(--space-3xl) 0; }
+/* Specificità maggiore di .section--dark: il fondo grigio caldo deve vincere */
+.book-of-month.section--dark { background: var(--ink-deep); color: #EDE8DE; padding: var(--space-2xl) 0; }
 .latest-reviews { padding: var(--space-3xl) 0; }
 .genres-section { padding: var(--space-2xl) 0 var(--space-3xl); }
 .quote-section { padding: var(--space-3xl) 0; }
-.cta-home { padding: 0 0 var(--space-3xl); }
+.cta-home { padding: var(--space-2xl) 0 var(--space-3xl); }
 .section-header--center { text-align: center; margin-left: auto; margin-right: auto; }
 
 /* ─── Pagina libro: misura stretta, copertina adattiva ─── */
 .book-single { padding: var(--space-2xl) 0 var(--space-3xl); }
 .book-single-grid { display: grid; grid-template-columns: minmax(0, 260px) minmax(0, 620px); gap: 3.5rem; align-items: start; justify-content: center; }
-.book-single-cover { position: sticky; top: 100px; }
+.book-single-cover { position: sticky; top: 100px; display: flex; flex-direction: column; gap: 1.5rem; min-width: 0; }
 .book-single-cover img { width: 100%; height: auto; aspect-ratio: 2 / 3; object-fit: cover; border-radius: var(--radius-lg); box-shadow: none; border: 1px solid var(--line); }
 .book-single-cover-placeholder {
     aspect-ratio: 2 / 3; background: var(--paper-warm); border: 1px solid var(--line);
@@ -97,14 +97,20 @@
 .book-single-quotes-list .quote-card { text-align: left; border-left: 2px solid var(--line-strong); padding-left: 1.5rem; }
 .book-single-quotes-list .quote-text { font-size: 1.25rem; margin: 0 0 0.5rem; }
 .book-single-quotes-list .quote-source { justify-content: flex-start; }
-.book-single-details { background: transparent; border-top: 1px solid var(--line); border-radius: 0; padding: 1.75rem 0; }
-.book-single-details-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem; }
+.book-single-details {
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    padding: 1.25rem;
+    background: var(--paper);
+}
+.book-single-details-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 0.9rem; }
 .book-single-details-label { color: var(--muted); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; }
 .book-single-details-value { color: var(--ink); font-size: 0.95rem; }
 @media (max-width: 900px) { .book-single-grid { grid-template-columns: minmax(0, 200px) minmax(0, 1fr); gap: 2rem; } }
 @media (max-width: 768px) {
     .book-single-grid { grid-template-columns: minmax(0, 1fr); gap: 1.75rem; }
-    .book-single-cover { position: static; max-width: 190px; margin: 0; }
+    .book-single-cover { position: static; max-width: none; }
+    #book-cover { max-width: 190px; }
     .book-single-details-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
     .book-single-review-text { font-size: 1.1rem; }
 }
@@ -150,4 +156,6 @@
 .results-info { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 2rem; padding-bottom: 1rem; border-bottom: 1px solid var(--line); }
 .results-count { font-size: 0.9rem; color: var(--ink-2); }
 .results-sort label { font-size: 0.8rem; color: var(--muted); }
+/* Filtri recensioni: attacco diretto all'header, niente vuoto sopra */
+.filters-section { padding: var(--space-2xl) 0 var(--space-3xl); }
 @media (max-width: 768px) { .about-hero-grid { grid-template-columns: 1fr; } .genres-grid { grid-template-columns: repeat(2, 1fr); } }
