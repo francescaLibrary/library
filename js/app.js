@@ -287,11 +287,10 @@ class App {
         const coverContainer = document.getElementById('book-cover');
         if (coverContainer) {
             coverContainer.innerHTML = `
-                <img src="${book.cover}" 
-                     alt="${book.title}"
-                     onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <img src="${book.cover}"
+                      alt="Copertina di ${book.title}"
+                      onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                 <div class="book-single-cover-placeholder" style="display: none;">
-                    <span class="icon">📚</span>
                     <span class="title">${book.title}</span>
                 </div>
             `;
@@ -373,7 +372,6 @@ class App {
             container.innerHTML = `
                 <div class="container">
                     <div class="empty-state">
-                        <div class="empty-state-icon">📚</div>
                         <h3 class="empty-state-title">Libro non trovato</h3>
                         <p class="empty-state-text">Il libro che stai cercando non esiste.</p>
                         <a href="recensioni.html" class="btn btn-primary mt-lg">Torna alle recensioni</a>

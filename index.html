@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="css/pages.css">
     
     <!-- Favicon -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='18' fill='%231C1917'/%3E%3Ctext x='50' y='68' font-size='58' text-anchor='middle' fill='%23FCFBF7' font-family='Georgia' font-style='italic'%3EP.%3C/text%3E%3C/svg%3E">
 </head>
 <body data-page="home">
     <!-- Navbar -->
@@ -23,15 +23,15 @@
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <p class="hero-tagline">📖 Un viaggio tra le pagine</p>
-                <h1 class="hero-title">Pagine e Parole</h1>
+                <p class="hero-tagline">Un viaggio tra le pagine</p>
+                <h1 class="hero-title">Pagine <em>e</em> Parole</h1>
                 <p class="hero-description">
-                    Benvenuti nel mio angolo dedicato alla lettura. Qui troverete recensioni sincere, 
-                    riflessioni sui libri che mi hanno emozionato e consigli per la vostra prossima lettura.
+                    Recensioni sincere, riflessioni e consigli — un diario di lettura
+                    per chi ama perdersi nei libri.
                 </p>
                 <div class="hero-buttons">
-                    <a href="recensioni.html" class="btn btn-primary">Scopri le Recensioni</a>
-                    <a href="libreria.html" class="btn btn-outline">Libreria</a>
+                    <a href="recensioni.html" class="btn btn-primary">Scopri le recensioni</a>
+                    <a href="libreria.html" class="link-arrow">Sfoglia la libreria →</a>
                 </div>
             </div>
         </div>
@@ -50,8 +50,9 @@
     <section class="book-of-month section">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">📖 Libro del Mese</h2>
-                <p class="section-subtitle">La mia lettura consigliata</p>
+                <span class="section-eyebrow">In evidenza</span>
+                <h2 class="section-title">Libro del mese</h2>
+                <p class="section-subtitle">La lettura che consiglio adesso</p>
             </div>
             <div id="book-of-month">
                 <div class="loading">Caricamento libro del mese...</div>
@@ -70,14 +71,15 @@
     <section class="latest-reviews section bg-white">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">✨ Ultime Recensioni</h2>
-                <p class="section-subtitle">Le mie letture più recenti</p>
+                <span class="section-eyebrow">Dal diario</span>
+                <h2 class="section-title">Ultime recensioni</h2>
+                <p class="section-subtitle">Le letture più recenti</p>
             </div>
             <div class="book-grid" id="latest-reviews">
                 <div class="loading">Caricamento recensioni...</div>
             </div>
-            <div class="text-center mt-2xl">
-                <a href="recensioni.html" class="btn btn-primary">Vedi Tutte le Recensioni</a>
+            <div class="mt-2xl">
+                <a href="recensioni.html" class="link-arrow">Tutte le recensioni →</a>
             </div>
         </div>
     </section>
