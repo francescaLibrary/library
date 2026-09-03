@@ -157,6 +157,13 @@
 .book-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem 2rem; }
 @media (max-width: 1024px) { .book-grid { grid-template-columns: repeat(3, 1fr); } }
 @media (max-width: 768px) { .book-grid { grid-template-columns: repeat(2, 1fr); gap: 1.75rem 1rem; } }
+@media (max-width: 520px) {
+    .book-grid { gap: 1.5rem 0.85rem; }
+    .book-card-title { font-size: 1rem; }
+    .book-card-author { font-size: 0.82rem; }
+    .book-card-genres .tag:nth-child(n+2) { display: none; }
+    .book-card-favorite { font-size: 0.6rem; padding: 0.2rem 0.5rem; }
+}
 
 /* ─── Libro in evidenza: due colonne pulite, badge = eyebrow ─── */
 .featured-book-card {
@@ -187,10 +194,49 @@
 }
 .featured-book-footer { margin-top: auto; display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
 @media (max-width: 768px) {
-    .featured-book-card { grid-template-columns: 140px 1fr; gap: 1.25rem; padding: 1.75rem 0; }
-    .featured-book-title { font-size: 1.4rem; }
-    .featured-book-excerpt { -webkit-line-clamp: 3; font-size: 1rem; }
+    .featured-book-card { grid-template-columns: 1fr; gap: 1.5rem; padding: 2rem 0; }
+    .featured-book-cover { max-width: 200px; }
+    .featured-book-title { font-size: 1.6rem; }
+    .featured-book-excerpt { -webkit-line-clamp: 4; font-size: 1rem; }
+    .featured-book-footer .btn { width: 100%; justify-content: center; }
 }
+
+/* ─── Libro in evidenza su fondo scuro ─── */
+.section--dark .featured-book-card { border-color: rgba(237,232,222,0.16); }
+.section--dark .featured-book-title { color: #FAF7F0; }
+.section--dark .featured-book-author,
+.section--dark .featured-book-excerpt { color: rgba(237,232,222,0.72); }
+.section--dark .featured-book-badge { color: #D9A679; }
+.section--dark .rating-star.filled { color: #FAF7F0; }
+.section--dark .rating-star { color: rgba(250,247,240,0.25); }
+.section--dark .rating-label { color: rgba(237,232,222,0.6); }
+.section--dark .btn-primary { background: #FAF7F0; color: var(--ink-deep); }
+.section--dark .btn-primary:hover { background: #fff; color: #000; }
+
+/* ─── Chip generi (home) ─── */
+.genre-chips { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+.genre-chip {
+    display: inline-flex; align-items: baseline; gap: 0.45rem;
+    border: 1px solid var(--line-strong); border-radius: var(--radius-full);
+    padding: 0.5rem 1rem; font-size: 0.85rem; font-weight: 500; color: var(--ink);
+    background: transparent; transition: var(--transition);
+}
+.genre-chip:hover { border-color: var(--ink); }
+.genre-chip-count { font-size: 0.75rem; color: var(--muted); font-weight: 400; }
+
+/* ─── Breadcrumb ─── */
+.breadcrumb {
+    display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center;
+    font-size: 0.8rem; color: var(--muted); margin-bottom: 1.75rem;
+}
+.breadcrumb a { border-bottom: 1px solid transparent; }
+.breadcrumb a:hover { color: var(--ink); border-color: var(--ink); }
+.breadcrumb-sep { opacity: 0.5; }
+.breadcrumb-current { color: var(--ink-2); }
+
+/* ─── Meta riga del libro ─── */
+.book-meta { display: flex; flex-wrap: wrap; gap: 0.4rem 0.75rem; font-size: 0.85rem; color: var(--muted); margin-bottom: 1rem; }
+.book-meta strong { color: var(--ink-2); font-weight: 500; }
 
 /* ─── Statistiche: riga tipografica con filetti, niente box ─── */
 .stats-grid {
@@ -251,7 +297,18 @@
 .footer-link:hover { color: var(--ink); border-color: var(--ink); }
 @media (max-width: 640px) { .footer-content { flex-direction: column; } }
 
-/* CTA / progress / empty */
+/* CTA / newsletter, progress, empty */
+.cta-box {
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-lg);
+    padding: 2.5rem 2rem;
+    text-align: center;
+    max-width: 620px;
+    margin: 0 auto;
+    background: #fff;
+}
+.cta-box-title { font-size: 1.6rem; margin-bottom: 0.6rem; }
+.cta-box-text { font-family: var(--font-body); font-style: italic; color: var(--ink-2); font-size: 1.05rem; margin-bottom: 1.5rem; }
 .cta-section { background: var(--ink); color: var(--paper); padding: var(--space-3xl) 0; text-align: left; }
 .cta-title { color: var(--paper); }
 .cta-description { opacity: 0.75; }

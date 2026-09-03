@@ -20,9 +20,10 @@
 }
 .hero-tagline::after { content: ''; height: 1px; width: 48px; background: var(--line-strong); }
 .hero-title {
-    font-size: 3.8rem; font-weight: 500; line-height: 1.02;
+    font-size: clamp(2.4rem, 1.5rem + 4.5vw, 3.8rem); font-weight: 500; line-height: 1.02;
     letter-spacing: -0.03em; margin-bottom: 1.25rem; color: var(--ink);
 }
+.hero-title em { font-style: italic; font-weight: 400; }
 .hero-description {
     font-family: var(--font-body); font-size: 1.3rem; font-style: italic;
     line-height: 1.6; color: var(--ink-2); margin-bottom: 2rem; max-width: 36em;
@@ -32,8 +33,10 @@
 .hero .btn-outline:hover { background: transparent; border-color: var(--ink); color: var(--ink); }
 @media (max-width: 768px) {
     .hero { padding: 3.5rem 0 2.5rem; }
-    .hero-title { font-size: 2.6rem; }
+    .hero-title { letter-spacing: -0.02em; }
     .hero-description { font-size: 1.15rem; }
+    .hero-buttons .btn { width: 100%; justify-content: center; }
+    .hero-buttons .link-arrow { margin-top: 0.25rem; }
 }
 
 /* ─── Intestazione pagina interna ─── */
@@ -47,14 +50,19 @@
 .page-header-count { font-family: var(--font-sans); font-style: normal; font-size: 0.85rem; color: var(--muted); }
 
 /* ─── Sezioni home ─── */
-.book-of-month { background: var(--paper); padding: var(--space-2xl) 0; }
+.book-of-month { background: transparent; padding: var(--space-2xl) 0; }
+.book-of-month.section--dark { padding: var(--space-3xl) 0; }
 .latest-reviews { padding: var(--space-3xl) 0; }
+.genres-section { padding: var(--space-2xl) 0 var(--space-3xl); }
+.quote-section { padding: var(--space-3xl) 0; }
+.cta-home { padding: 0 0 var(--space-3xl); }
+.section-header--center { text-align: center; margin-left: auto; margin-right: auto; }
 
-/* ─── Pagina libro: misura stretta, copertina piccola ─── */
-.book-single { padding: var(--space-3xl) 0; }
-.book-single-grid { display: grid; grid-template-columns: 260px minmax(0, 620px); gap: 3.5rem; align-items: start; justify-content: center; }
+/* ─── Pagina libro: misura stretta, copertina adattiva ─── */
+.book-single { padding: var(--space-2xl) 0 var(--space-3xl); }
+.book-single-grid { display: grid; grid-template-columns: minmax(180px, 260px) minmax(0, 620px); gap: 3.5rem; align-items: start; justify-content: center; }
 .book-single-cover { position: sticky; top: 100px; }
-.book-single-cover img { width: 100%; border-radius: var(--radius-lg); box-shadow: none; border: 1px solid var(--line); }
+.book-single-cover img { width: 100%; height: auto; aspect-ratio: 2 / 3; object-fit: cover; border-radius: var(--radius-lg); box-shadow: none; border: 1px solid var(--line); }
 .book-single-cover-placeholder {
     aspect-ratio: 2 / 3; background: var(--paper-warm); border: 1px solid var(--line);
     border-radius: var(--radius-lg); display: flex; flex-direction: column;
@@ -64,8 +72,8 @@
 .book-single-cover-placeholder .icon { display: none; }
 .book-single-content { min-width: 0; }
 .book-single-header { margin-bottom: 2rem; padding-bottom: 2rem; border-bottom: 1px solid var(--line); }
-.book-single-title { font-size: 2.6rem; margin-bottom: 0.35rem; }
-.book-single-author { font-family: var(--font-body); font-style: italic; font-size: 1.25rem; color: var(--ink-2); margin-bottom: 1.25rem; }
+.book-single-title { font-size: clamp(1.9rem, 1.3rem + 3vw, 2.6rem); margin-bottom: 0.35rem; text-wrap: balance; }
+.book-single-author { font-family: var(--font-body); font-style: italic; font-size: 1.25rem; color: var(--ink-2); margin-bottom: 1rem; }
 .book-single-rating { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; flex-wrap: wrap; }
 .book-single-review { margin-bottom: 2.5rem; }
 .book-single-review-title, .book-single-quotes-title, .book-single-details-title {
@@ -74,6 +82,15 @@
 }
 .book-single-review-text { font-family: var(--font-body); font-size: 1.18rem; line-height: 1.85; color: var(--ink); }
 .book-single-review-text p { margin-bottom: 1.4rem; }
+/* Capolettera editoriale sul primo paragrafo */
+.book-single-review-text p:first-of-type::first-letter {
+    font-family: var(--font-display);
+    font-size: 3.4em;
+    line-height: 0.85;
+    float: left;
+    padding: 0.08em 0.12em 0 0;
+    color: var(--ink);
+}
 .book-single-quotes { margin-bottom: 2.5rem; }
 .book-single-quotes-list { display: flex; flex-direction: column; gap: 2rem; }
 .book-single-quotes-list .quote-card { text-align: left; border-left: 2px solid var(--line-strong); padding-left: 1.5rem; }
@@ -83,24 +100,37 @@
 .book-single-details-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
 .book-single-details-label { color: var(--muted); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; }
 .book-single-details-value { color: var(--ink); font-size: 0.95rem; }
-@media (max-width: 900px) { .book-single-grid { grid-template-columns: 200px 1fr; gap: 2rem; } .book-single-title { font-size: 2.1rem; } }
+@media (max-width: 900px) { .book-single-grid { grid-template-columns: 200px 1fr; gap: 2rem; } }
 @media (max-width: 768px) {
-    .book-single-grid { grid-template-columns: 1fr; }
-    .book-single-cover { position: static; max-width: 200px; margin: 0; }
+    .book-single-grid { grid-template-columns: 1fr; gap: 1.75rem; }
+    .book-single-cover { position: static; max-width: 190px; margin: 0; }
     .book-single-details-grid { grid-template-columns: 1fr 1fr; }
+    .book-single-review-text { font-size: 1.1rem; }
 }
 
-/* ─── Libreria: griglia ariosa ─── */
+/* ─── Correlati (fine pagina libro) ─── */
+.related { border-top: 1px solid var(--line); padding: var(--space-2xl) 0 0; margin-top: var(--space-2xl); }
+.related .book-grid { grid-template-columns: repeat(3, 1fr); gap: 2rem 1.5rem; }
+@media (max-width: 768px) { .related .book-grid { grid-template-columns: repeat(3, 1fr); gap: 1.25rem 0.75rem; } }
+@media (max-width: 560px) { .related .book-grid { grid-template-columns: repeat(2, 1fr); } }
+
+/* ─── Libreria: griglia ariosa, titoli sempre leggibili su touch ─── */
 .library-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 2rem 1.5rem; }
 .library-item { aspect-ratio: 2 / 3; border-radius: var(--radius-lg); overflow: hidden; background: var(--paper-warm); }
 .library-item:hover { transform: none; box-shadow: none; }
 .library-item img { width: 100%; height: 100%; object-fit: cover; }
 .library-item-placeholder { background: var(--paper-warm); color: var(--muted); font-family: var(--font-display); font-style: italic; }
-.library-item-overlay { background: linear-gradient(to top, rgba(28,25,23,0.78) 0%, transparent 55%); opacity: 0; }
+.library-item-overlay { background: linear-gradient(to top, rgba(28,25,23,0.82) 0%, transparent 55%); opacity: 0; }
 .library-item:hover .library-item-overlay, .library-item:focus-within .library-item-overlay { opacity: 1; }
+/* Su touch l'hover non esiste: mostra sempre i titoli */
+@media (hover: none) { .library-item-overlay { opacity: 1; } }
 .library-item-title { font-size: 0.9rem; }
 @media (max-width: 1024px) { .library-grid { grid-template-columns: repeat(4, 1fr); } }
-@media (max-width: 768px) { .library-grid { grid-template-columns: repeat(3, 1fr); gap: 1rem; } }
+@media (max-width: 768px) { .library-grid { grid-template-columns: repeat(3, 1fr); gap: 1.25rem 1rem; } }
+@media (max-width: 520px) {
+    .library-grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem 1rem; }
+    .library-item-title { font-size: 0.85rem; }
+}
 
 /* About / contact / generi: sobri */
 .about-hero { background: var(--paper); padding: var(--space-3xl) 0; }

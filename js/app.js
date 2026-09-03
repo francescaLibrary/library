@@ -43,12 +43,13 @@ class App {
      * Initialize home page
      */
     async initHomePage() {
-        const [site, genres, stats, latestBooks, favoriteBooks] = await Promise.all([
+        const [site, genres, stats, latestBooks, favoriteBooks, allBooks] = await Promise.all([
             this.dataLoader.load('site.json'),
             this.dataLoader.getGenres(),
             this.dataLoader.getStats(),
             this.dataLoader.getBooks({ limit: 6, sort: 'date-desc' }),
-            this.dataLoader.getBooks({ favorite: true, limit: 3 })
+            this.dataLoader.getBooks({ favorite: true, limit: 3 }),
+            this.dataLoader.getBooks({})
         ]);
 
         // Book of the month
@@ -86,6 +87,22 @@ class App {
                 }
             }
         }
+
+        // Genre chips with counts
+        const chipsContainer = document.getElementById('genre-chips');
+        if (chipsContainer && genres.length > 0) {
+            const counts = {};
+            allBooks.forEach(book => {
+                (book.genres || []).forEach(g => { counts[g] = (counts[g] || 0) + 1; });
+            });
+            chipsContainer.innerHTML = this.renderer.renderGenreChips(genres, counts);
+        }
+
+        // CTA box
+        const ctaContainer = document.getElementById('home-cta');
+        if (ctaContainer && site?.cta) {
+            ctaContainer.innerHTML = this.renderer.renderCTA(site.cta, site?.social?.email?.address);
+        }
     }
 
     /**
@@ -101,6 +118,8 @@ class App {
         const genreSelect = document.getElementById('filter-genre');
         const ratingSelect = document.getElementById('filter-rating');
         const yearSelect = document.getElementById('filter-year');
+        const searchInput = document.getElementById('filter-search');
+        const sortSelect = document.getElementById('filter-sort');
 
         if (genreSelect) {
             genreSelect.innerHTML = this.renderer.renderGenreOptions(genres);
@@ -111,6 +130,14 @@ class App {
         if (yearSelect) {
             yearSelect.innerHTML = this.renderer.renderYearOptions(years);
         }
+
+        // Preset filters from URL (e.g. recensioni.html?genere=fantasy)
+        const params = new URLSearchParams(window.location.search);
+        if (params.get('genere') && genreSelect) genreSelect.value = params.get('genere');
+        if (params.get('voto') && ratingSelect) ratingSelect.value = params.get('voto');
+        if (params.get('anno') && yearSelect) yearSelect.value = params.get('anno');
+        if (params.get('cerca') && searchInput) searchInput.value = params.get('cerca');
+        if (params.get('ordina') && sortSelect) sortSelect.value = params.get('ordina');
 
         // Initial load
         await this.loadFilteredBooks();
@@ -276,19 +303,24 @@ class App {
         document.title = `${book.title} - Pagine e Parole`;
 
         // Populate book data
-        this.populateBookPage(book, genres);
+        await this.populateBookPage(book, genres);
     }
 
     /**
      * Populate book page with data
      */
-    populateBookPage(book, genres) {
+    async populateBookPage(book, genres) {
+        // Breadcrumb
+        const crumbEl = document.getElementById('crumb-title');
+        if (crumbEl) crumbEl.textContent = book.title;
+
         // Cover
         const coverContainer = document.getElementById('book-cover');
         if (coverContainer) {
             coverContainer.innerHTML = `
                 <img src="${book.cover}"
                       alt="Copertina di ${book.title}"
+                      width="400" height="600" decoding="async"
                       onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                 <div class="book-single-cover-placeholder" style="display: none;">
                     <span class="title">${book.title}</span>
@@ -300,7 +332,11 @@ class App {
         const titleEl = document.getElementById('book-title');
         const authorEl = document.getElementById('book-author');
         if (titleEl) titleEl.textContent = book.title;
-        if (authorEl) authorEl.textContent = book.author;
+        if (authorEl) authorEl.textContent = `di ${book.author}`;
+
+        // Meta row
+        const metaEl = document.getElementById('book-meta');
+        if (metaEl) metaEl.innerHTML = this.renderer.renderBookMeta(book);
 
         // Rating
         const ratingContainer = document.getElementById('book-rating');
@@ -357,9 +393,25 @@ class App {
         // Tags
         const tagsContainer = document.getElementById('book-tags');
         if (tagsContainer && book.tags) {
-            tagsContainer.innerHTML = book.tags.map(tag => 
+            tagsContainer.innerHTML = book.tags.map(tag =>
                 `<span class="tag">#${tag}</span>`
             ).join('');
+        }
+
+        // Related books (shared genres, excluding self)
+        try {
+            const allBooks = await this.dataLoader.getBooks({});
+            const related = allBooks
+                .filter(b => b.id !== book.id && (b.genres || []).some(g => (book.genres || []).includes(g)))
+                .slice(0, 3);
+            const relatedSection = document.getElementById('related-section');
+            const relatedContainer = document.getElementById('related-books');
+            if (relatedSection && relatedContainer && related.length > 0) {
+                relatedContainer.innerHTML = this.renderer.renderBookGrid(related, genres);
+                relatedSection.style.display = '';
+            }
+        } catch (e) {
+            console.warn('Related books failed:', e);
         }
     }
 

@@ -20,8 +20,15 @@
     <div id="navbar"></div>
     
     <!-- Book Content -->
-    <section class="book-single section">
+    <section class="book-single">
         <div class="container">
+            <nav class="breadcrumb" aria-label="Percorso">
+                <a href="index.html">Home</a>
+                <span class="breadcrumb-sep">/</span>
+                <a href="recensioni.html">Recensioni</a>
+                <span class="breadcrumb-sep">/</span>
+                <span class="breadcrumb-current" id="crumb-title">…</span>
+            </nav>
             <div class="book-single-grid">
                 <!-- Cover -->
                 <aside class="book-single-cover" id="book-cover">
@@ -34,7 +41,9 @@
                     <header class="book-single-header">
                         <h1 class="book-single-title" id="book-title">Caricamento...</h1>
                         <p class="book-single-author" id="book-author"></p>
-                        
+
+                        <div class="book-meta" id="book-meta"></div>
+
                         <div class="book-single-rating" id="book-rating">
                             <!-- Rating will be inserted here -->
                         </div>
@@ -77,10 +86,19 @@
                     
                     <!-- Back Link -->
                     <div class="mt-xl">
-                        <a href="recensioni.html" class="btn btn-secondary">← Torna alle Recensioni</a>
+                        <a href="recensioni.html" class="btn btn-secondary">← Torna alle recensioni</a>
                     </div>
                 </article>
             </div>
+
+            <!-- Related -->
+            <section class="related" id="related-section" style="display:none;">
+                <div class="section-header">
+                    <span class="section-eyebrow">Continua a leggere</span>
+                    <h2 class="section-title" style="font-size:1.6rem;">Potrebbe piacerti anche</h2>
+                </div>
+                <div class="book-grid" id="related-books"></div>
+            </section>
         </div>
     </section>
     

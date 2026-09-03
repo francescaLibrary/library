@@ -11,7 +11,10 @@ Un blog elegante e professionale per recensioni di libri, costruito con HTML, CS
 - **Copertine libri**: Supporto immagini con placeholder automatico
 - **Citazioni preferite**: Sezione dedicata alle frasi più belle
 - **Statistiche automatiche**: Conteggio libri, pagine, media voti
-- **Libro del mese**: Evidenzia un libro in homepage
+- **Copertine reali**: `assets/covers/` contiene le copertine (fonte demo: Open Library Covers API — sostituibili con le edizioni italiane)
+- **Libri correlati**: in fondo a ogni scheda, fino a 3 libri dello stesso genere
+- **Chip generi in home**: con conteggio, link a `recensioni.html?genere=<id>` (supportati anche `?voto=`, `?anno=`, `?cerca=`, `?ordina=`)
+- **Contenuti demo**: 6 libri con `"demo": true` (1984, Dune, Piccolo Principe, Harry Potter 1, Twilight, After) — recensioni e voti da sostituire
 
 ## 📁 Struttura del Progetto
 
@@ -112,15 +115,25 @@ I generi sono definiti in `data/categories.json`:
 
 ## 🎨 Personalizzazione Colori
 
-Modifica le variabili CSS in `css/base.css`:
+Variabili CSS in `css/base.css` (edizione editoriale):
 
 ```css
 :root {
-    --primary: #722F37;      /* Bordeaux */
-    --secondary: #F5F0E8;    /* Crema */
-    --accent: #C9A227;       /* Oro */
+    --paper: #FCFBF7;       /* Carta */
+    --paper-warm: #F4EFE7;  /* Carta calda (citazione) */
+    --ink: #1C1917;         /* Inchiostro */
+    --ink-deep: #131110;    /* Stacco scuro (libro del mese) */
+    --accent: #9A3412;      /* Terracotta (eyebrow) */
 }
 ```
+
+Sezioni home: hero (carta) → statistiche (fascia bianca) → ultime recensioni → libro del mese (**stacco scuro**, unico momento dark) → generi → citazione (calda) → contatti.
+
+## 🧹 Sostituire i contenuti demo
+
+1. In `data/books.json` elimina i 6 oggetti con `"demo": true` (o riscrivi recensione/voto e togli il flag)
+2. Sostituisci i JPG in `assets/covers/` con le tue edizioni (stesso nome file = zero modifiche al JSON)
+3. Il sito richiede `http://` (es. `python3 -m http.server`) perché i JSON sono caricati via `fetch`
 
 ## 📱 Hosting
 

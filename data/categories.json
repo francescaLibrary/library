@@ -64,6 +64,13 @@
       "description": "Storie di crescita e scoperta di sé"
     },
     {
+      "id": "fantascienza-distopico",
+      "name": "Fantascienza e Distopico",
+      "icon": "",
+      "color": "#36454F",
+      "description": "Futuri possibili, mondi altri e società immaginarie"
+    },
+    {
       "id": "rosa-sentimentale",
       "name": "Rosa / Sentimentale",
       "icon": "💕",

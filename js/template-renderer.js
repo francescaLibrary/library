@@ -40,11 +40,11 @@ class TemplateRenderer {
     }
 
     renderBookCover(book) {
-        const initial = (book.title || 'P').charAt(0);
         return `
             <img src="${book.cover}"
                   alt="Copertina di ${book.title}"
-                  loading="lazy"
+                  width="400" height="600"
+                  loading="lazy" decoding="async"
                   onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
             <div class="book-card-cover-placeholder" style="display: none;">
                 <span class="title">${book.title}</span>
@@ -95,7 +95,8 @@ class TemplateRenderer {
                 <div class="featured-book-cover">
                     <img src="${book.cover}"
                           alt="Copertina di ${book.title}"
-                          loading="lazy"
+                          width="400" height="600"
+                          loading="lazy" decoding="async"
                           onerror="this.parentElement.innerHTML='<div class=\\'book-card-cover-placeholder\\' style=\\'height:100%;display:flex;\\'><span class=\\'title\\'>${book.title}</span></div>';">
                 </div>
                 <div class="featured-book-body">
@@ -140,7 +141,8 @@ class TemplateRenderer {
             <a href="libro.html?id=${book.id}" class="library-item" aria-label="${book.title} di ${book.author}">
                 <img src="${book.cover}"
                       alt="Copertina di ${book.title}"
-                      loading="lazy"
+                      width="400" height="600"
+                      loading="lazy" decoding="async"
                       onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                 <div class="library-item-placeholder" style="display: none;">${(book.title || 'P').charAt(0)}</div>
                 <div class="library-item-overlay">
@@ -176,8 +178,52 @@ class TemplateRenderer {
         `;
     }
 
-    renderGenreOptions(genres, selected = '') {
-        let html = '<option value="">Tutti i generi</option>';
+    /**
+     * Genre chips with counts (home) — link to filtered recensioni page
+     * @param {Array} genres - All genres
+     * @param {Object} counts - { genreId: count }
+     */
+    renderGenreChips(genres, counts = {}) {
+        return genres
+            .filter(g => (counts[g.id] || 0) > 0)
+            .sort((a, b) => (counts[b.id] || 0) - (counts[a.id] || 0))
+            .map(g => `
+                <a class="genre-chip" href="recensioni.html?genere=${g.id}">
+                    ${g.name}
+                    <span class="genre-chip-count">${counts[g.id]}</span>
+                </a>
+            `).join('');
+    }
+
+    /**
+     * Newsletter/CTA box (home)
+     * @param {Object} cta - { title, description }
+     * @param {string} email - contact email
+     */
+    renderCTA(cta, email = '') {
+        if (!cta) return '';
+        return `
+            <div class="cta-box">
+                <h2 class="cta-box-title">${cta.title}</h2>
+                <p class="cta-box-text">${cta.description}</p>
+                ${email ? `<a class="btn btn-primary" href="mailto:${email}">Scrivimi</a>` : ''}
+            </div>
+        `;
+    }
+
+    /**
+     * Inline meta row for single book page
+     */
+    renderBookMeta(book) {
+        const parts = [];
+        if (book.year) parts.push(`<span><strong>${book.year}</strong></span>`);
+        if (book.pages) parts.push(`<span><strong>${book.pages}</strong> pagine</span>`);
+        if (book.publisher) parts.push(`<span>${book.publisher}</span>`);
+        if (book.dateRead) parts.push(`<span>Letto nel <strong>${this.formatDate(book.dateRead)}</strong></span>`);
+        return parts.join('<span aria-hidden="true">·</span>');
+    }
+
+    renderGenreOptions(genres, selected = '') {        let html = '<option value="">Tutti i generi</option>';
         genres.forEach(genre => {
             html += `<option value="${genre.id}" ${genre.id === selected ? 'selected' : ''}>${genre.name}</option>`;
         });

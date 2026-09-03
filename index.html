@@ -5,20 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Pagine e Parole - Recensioni, riflessioni e viaggi tra le pagine. Un blog dedicato agli amanti della lettura.">
     <title>Pagine e Parole - Recensioni Libri</title>
-    
+
     <!-- CSS -->
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/navigation.css">
     <link rel="stylesheet" href="css/components.css">
     <link rel="stylesheet" href="css/pages.css">
-    
+
     <!-- Favicon -->
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='18' fill='%231C1917'/%3E%3Ctext x='50' y='68' font-size='58' text-anchor='middle' fill='%23FCFBF7' font-family='Georgia' font-style='italic'%3EP.%3C/text%3E%3C/svg%3E">
 </head>
 <body data-page="home">
     <!-- Navbar -->
     <div id="navbar"></div>
-    
+
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
@@ -36,39 +36,18 @@
             </div>
         </div>
     </section>
-    
-    <!-- Stats Section -->
-    <section class="section bg-white">
+
+    <!-- Stats band -->
+    <section class="section--band">
         <div class="container">
             <div class="stats-grid" id="stats-grid">
                 <div class="loading">Caricamento statistiche...</div>
             </div>
         </div>
     </section>
-    
-    <!-- Book of the Month -->
-    <section class="book-of-month section">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-eyebrow">In evidenza</span>
-                <h2 class="section-title">Libro del mese</h2>
-                <p class="section-subtitle">La lettura che consiglio adesso</p>
-            </div>
-            <div id="book-of-month">
-                <div class="loading">Caricamento libro del mese...</div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Quote Section -->
-    <section class="section bg-cream">
-        <div class="container container-narrow">
-            <div id="quote-section"></div>
-        </div>
-    </section>
-    
+
     <!-- Latest Reviews -->
-    <section class="latest-reviews section bg-white">
+    <section class="latest-reviews section">
         <div class="container">
             <div class="section-header">
                 <span class="section-eyebrow">Dal diario</span>
@@ -83,10 +62,55 @@
             </div>
         </div>
     </section>
-    
+
+    <!-- Book of the Month (dark break) -->
+    <section class="book-of-month section section--dark">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-eyebrow">In evidenza</span>
+                <h2 class="section-title">Libro del mese</h2>
+                <p class="section-subtitle">La lettura che consiglio adesso</p>
+            </div>
+            <div id="book-of-month">
+                <div class="loading">Caricamento libro del mese...</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Genres -->
+    <section class="genres-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-eyebrow">Esplora</span>
+                <h2 class="section-title">Per genere</h2>
+                <p class="section-subtitle">Trova la tua prossima lettura</p>
+            </div>
+            <div class="genre-chips" id="genre-chips">
+                <div class="loading">Caricamento generi...</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quote Section -->
+    <section class="quote-section section--warm">
+        <div class="container container-narrow">
+            <div class="section-header section-header--center">
+                <span class="section-eyebrow">Marginalia</span>
+            </div>
+            <div id="quote-section"></div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-home">
+        <div class="container">
+            <div id="home-cta"></div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <div id="footer"></div>
-    
+
     <!-- JavaScript -->
     <script src="js/data-loader.js"></script>
     <script src="js/template-renderer.js"></script>

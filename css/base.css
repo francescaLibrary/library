@@ -8,8 +8,10 @@
 :root {
     --paper: #FCFBF7;
     --paper-warm: #F4EFE7;
+    --paper-deep: #ECE4D5;
     --card: #FFFFFF;
     --ink: #1C1917;
+    --ink-deep: #131110;
     --ink-2: #57534E;
     --muted: #A39E96;
     --line: #E9E2D6;
@@ -113,11 +115,23 @@ a { color: inherit; text-decoration: none; transition: var(--transition); }
     line-height: 1.5;
 }
 
-/* Sfondi: piatti, mai gradienti */
+/* Sfondi: piatti, mai gradienti. Ogni sezione ha il suo tono. */
 .bg-white { background: var(--paper); }
 .bg-cream { background: var(--paper-warm); }
 .bg-dark { background: var(--ink); color: var(--paper); }
 .bg-dark h1, .bg-dark h2, .bg-dark h3 { color: var(--paper); }
+
+/* Fascia bianca con filetti — stacca le statistiche */
+.section--band { background: #fff; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: var(--space-2xl) 0; }
+.section--band .stats-grid { border-top: none; border-bottom: none; }
+.section--band .stat-card { padding: 0.5rem 1rem; }
+/* Stacco scuro editoriale — un solo momento scuro per pagina */
+.section--dark { background: var(--ink-deep); color: #EDE8DE; }
+.section--dark .section-title { color: #FAF7F0; }
+.section--dark .section-subtitle { color: rgba(237,232,222,0.65); }
+.section--dark .section-eyebrow { color: #D9A679; }
+/* Fascia calda */
+.section--warm { background: var(--paper-warm); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
 
 /* Utility testo */
 .text-center { text-align: center; }

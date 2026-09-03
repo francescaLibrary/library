@@ -230,6 +230,122 @@
         "La storia ha cominciato quando gli uomini hanno inventato gli dèi, e finirà quando gli uomini diventeranno dèi."
       ],
       "tags": ["storia", "evoluzione", "società", "filosofia"]
+    },
+    {
+      "id": "1984",
+      "title": "1984",
+      "author": "George Orwell",
+      "cover": "assets/covers/1984.jpg",
+      "genres": ["fantascienza-distopico", "classici"],
+      "year": 1949,
+      "pages": 336,
+      "publisher": "Mondadori",
+      "isbn": "978-8804668231",
+      "dateRead": "2025-02",
+      "rating": 5,
+      "favorite": true,
+      "demo": true,
+      "review": "Riletto a distanza di anni, fa ancora più paura della prima volta. Winston Smith, il Ministero della Verità, il Grande Fratello che osserva ogni cosa: Orwell non ha scritto fantascienza, ha scritto un manuale di resistenza. La neolingua, il bipensiero, la riscrittura continua del passato sono meccanismi che riconosco ogni giorno nel dibattito pubblico. La prosa è secca, senza una parola di troppo. Il finale non consola, e proprio per questo resta addosso per settimane. DEMO: sostituisci questa recensione con la tua.",
+      "quotes": [
+        "Chi controlla il passato controlla il futuro: chi controlla il presente controlla il passato."
+      ],
+      "tags": ["distopia", "politica", "controllo", "demo"]
+    },
+    {
+      "id": "dune",
+      "title": "Dune",
+      "author": "Frank Herbert",
+      "cover": "assets/covers/dune.jpg",
+      "genres": ["fantascienza-distopico", "fantasy"],
+      "year": 1965,
+      "pages": 688,
+      "publisher": "Fanucci",
+      "isbn": "978-8834726012",
+      "dateRead": "2024-12",
+      "rating": 5,
+      "favorite": true,
+      "demo": true,
+      "review": "Il deserto di Arrakis è uno dei mondi più credibili mai costruiti nella narrativa. Spezia, vermi giganti, intrighi tra casate: sotto la superficie dell'avventura c'è un romanzo politico ed ecologico di una profondità rara. Paul Atreides non è un eroe classico, è un monito sul potere dei messia. Le prime cento pagine chiedono pazienza per via dei tanti nomi, poi il libro decolla e non si riesce a posarlo. DEMO: sostituisci questa recensione con la tua.",
+      "quotes": [
+        "Non devo aver paura. La paura uccide la mente."
+      ],
+      "tags": ["deserto", "ecologia", "potere", "demo"]
+    },
+    {
+      "id": "il-piccolo-principe",
+      "title": "Il Piccolo Principe",
+      "author": "Antoine de Saint-Exupéry",
+      "cover": "assets/covers/piccolo-principe.jpg",
+      "genres": ["classici", "romanzo-formazione"],
+      "year": 1943,
+      "pages": 112,
+      "publisher": "Bompiani",
+      "isbn": "978-8845296826",
+      "dateRead": "2024-10",
+      "rating": 4,
+      "favorite": false,
+      "demo": true,
+      "review": "Si legge in un pomeriggio e si rilegge per una vita. La storia del piccolo viaggiatore tra gli asteroidi sembra una favola per bambini, ma ogni pianeta è uno specchio degli adulti: il re, il vanitoso, l'uomo d'affari che conta le stelle senza mai guardarle. La volpe resta il cuore del libro, con la lezione sull'addomesticare e sul creare legami. Tolgo una stella solo perché alcune edizioni hanno traduzioni invecchiate: cercatene una recente. DEMO: sostituisci questa recensione con la tua.",
+      "quotes": [
+        "Non si vede bene che col cuore. L'essenziale è invisibile agli occhi."
+      ],
+      "tags": ["fiaba", "amicizia", "infanzia", "demo"]
+    },
+    {
+      "id": "harry-potter-pietra-filosofale",
+      "title": "Harry Potter e la Pietra Filosofale",
+      "author": "J.K. Rowling",
+      "cover": "assets/covers/harry-potter-1.jpg",
+      "genres": ["fantasy", "romanzo-formazione"],
+      "year": 1997,
+      "pages": 320,
+      "publisher": "Salani",
+      "isbn": "978-8877827028",
+      "dateRead": "2024-08",
+      "rating": 4,
+      "favorite": false,
+      "demo": true,
+      "review": "Rilettura nostalgica dopo vent'anni: Hogwarts funziona ancora benissimo come macchina narrativa. Il mistero della pietra è semplice ma costruito con cura, e i personaggi secondari — Hermione su tutti — portano il peso della storia. Da adulta noto qualche scorciatoia nella trama e un ritmo altalenante nella parte centrale, ma l'ultimo terzo fila via liscio. Perfetto come porta d'ingresso alla saga o come lettura leggera tra due romanzi impegnativi. DEMO: sostituisci questa recensione con la tua.",
+      "quotes": [
+        "Ci vogliono doti non comuni di coraggio per opporsi ai propri nemici, ma per opporsi ai propri amici ne occorrono ancora di più."
+      ],
+      "tags": ["magia", "saga", "scuola", "demo"]
+    },
+    {
+      "id": "twilight",
+      "title": "Twilight",
+      "author": "Stephenie Meyer",
+      "cover": "assets/covers/twilight.jpg",
+      "genres": ["rosa-sentimentale", "fantasy"],
+      "year": 2005,
+      "pages": 448,
+      "publisher": "Fazi",
+      "isbn": "978-8881127189",
+      "dateRead": "2024-04",
+      "rating": 2,
+      "favorite": false,
+      "demo": true,
+      "review": "Letto per curiosità culturale, dopo anni di meme e dibattiti. La storia d'amore tra Bella ed Edward scorre veloce e in alcuni punti l'atmosfera piovosa di Forks è davvero evocativa. Ma la protagonista senza interiorità, il romanticismo tossico spacciato per passione e i dialoghi ripetitivi rendono difficile andare oltre la sufficienza. Resta un fenomeno interessante da studiare, più che un bel romanzo. DEMO: sostituisci questa recensione con la tua.",
+      "quotes": [],
+      "tags": ["vampiri", "ya", "fenomeno", "demo"]
+    },
+    {
+      "id": "after",
+      "title": "After",
+      "author": "Anna Todd",
+      "cover": "assets/covers/after.jpg",
+      "genres": ["rosa-sentimentale"],
+      "year": 2014,
+      "pages": 592,
+      "publisher": "Sperling & Kupfer",
+      "isbn": "978-8820060980",
+      "dateRead": "2023-10",
+      "rating": 1,
+      "favorite": false,
+      "demo": true,
+      "review": "Nato come fanfiction e si sente in ogni pagina: trama che gira a vuoto, litigi identici che si ripetono per cinquecento pagine, personaggi che cambiano idea ogni capitolo senza motivo. Hardin è il catalogo dei comportamenti da non romanticizzare mai. Lo finisco solo per poterlo recensire onestamente: evitatelo, ci sono ottimi romance contemporanei che meritano il vostro tempo. DEMO: sostituisci questa recensione con la tua.",
+      "quotes": [],
+      "tags": ["romance", "bocciato", "demo"]
     }
   ]
 }
