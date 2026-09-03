@@ -1,20 +1,53 @@
-<nav class="navbar">
-    <div class="container">
-        <a href="index.html" class="nav-logo">
-            <span class="nav-logo-mark">P.</span>
-            <span class="nav-logo-text">Pagine e Parole</span>
-        </a>
-
-        <button class="nav-toggle" aria-label="Menu" aria-expanded="false">
-            <span></span>
-            <span></span>
-            <span></span>
+<header class="lrb">
+  <nav class="navbar" aria-label="Navigazione principale">
+    <div class="container navbar-inner">
+      <div class="navbar-left">
+        <button class="nav-toggle" aria-label="Apri menu" aria-expanded="false" aria-controls="siteDrawer">
+          <span></span>
+          <span></span>
+          <span></span>
         </button>
-
-        <div class="nav-links">
-            <a href="index.html" class="nav-link" data-page="home">Home</a>
-            <a href="recensioni.html" class="nav-link" data-page="recensioni">Recensioni</a>
-            <a href="libreria.html" class="nav-link" data-page="libreria">Libreria</a>
-        </div>
+        <button type="button" class="nav-search nav-search--desktop" data-search-open aria-expanded="false" aria-label="Cerca nel sito">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/></svg>
+          <span>Cerca</span>
+        </button>
+      </div>
+      <a href="index.html" class="masthead" aria-label="Pagine e Parole - Home">
+        <span class="mast-title">Pagine e Parole</span>
+        <span class="mast-sub">DIARIO <em>di</em> LETTURA</span>
+      </a>
+      <div class="navbar-right">
+        <button type="button" class="nav-search nav-search--mobile" data-search-open aria-expanded="false" aria-label="Cerca nel sito">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/></svg>
+        </button>
+      </div>
     </div>
-</nav>
+  </nav>
+  <div class="search-panel" id="searchPanel" role="dialog" aria-label="Ricerca nel sito" aria-hidden="true" hidden>
+    <div class="container search-panel-inner">
+      <div class="search-box">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/></svg>
+        <label class="sr-only" for="globalSearchInput">Cerca nel sito</label>
+        <input id="globalSearchInput" type="search" placeholder="Cerca titolo, autore o parola..." autocomplete="off">
+        <button type="button" id="searchClose" aria-label="Chiudi ricerca">&times;</button>
+      </div>
+      <p class="search-kbd-hint">Premi <kbd>/</kbd> per cercare, <kbd>Esc</kbd> per chiudere</p>
+      <div class="search-results" id="searchResults" aria-live="polite"></div>
+    </div>
+  </div>
+  <div class="sub-mast" aria-hidden="true">
+    <div class="container sub-mast-inner"></div>
+  </div>
+  <div class="nav-links" id="siteDrawer" aria-label="Menu">
+    <div class="drawer-inner">
+      <p class="drawer-label">Menu</p>
+      <a href="index.html" class="nav-link" data-page="home">Home</a>
+      <a href="recensioni.html" class="nav-link" data-page="recensioni">Recensioni</a>
+      <a href="libreria.html" class="nav-link" data-page="libreria">Libreria</a>
+      <div class="drawer-sep"></div>
+      <p class="drawer-label">Informazioni</p>
+      <a href="termini.html" class="nav-link nav-link--sub" data-page="termini">Termini e condizioni</a>
+      <a href="privacy.html" class="nav-link nav-link--sub" data-page="privacy">Privacy</a>
+    </div>
+  </div>
+</header>
