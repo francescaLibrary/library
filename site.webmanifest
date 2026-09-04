@@ -1,0 +1,11 @@
+{
+  "name": "Pagine e Parole — Diario di lettura",
+  "short_name": "Pagine e Parole",
+  "lang": "it",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f8f5ec",
+  "theme_color": "#1e2f4e",
+  "description": "Recensioni, riflessioni e viaggi tra le pagine."
+}

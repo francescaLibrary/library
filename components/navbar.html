@@ -2,12 +2,12 @@
   <nav class="navbar" aria-label="Navigazione principale">
     <div class="container navbar-inner">
       <div class="navbar-left">
-        <button class="nav-toggle" aria-label="Apri menu" aria-expanded="false">
+        <button class="nav-toggle" aria-label="Apri menu" aria-expanded="false" aria-controls="siteDrawer">
           <span></span>
           <span></span>
           <span></span>
         </button>
-        <button type="button" class="nav-search nav-search--desktop" data-search-open aria-label="Cerca nel sito">
+        <button type="button" class="nav-search nav-search--desktop" data-search-open aria-expanded="false" aria-label="Cerca nel sito">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/></svg>
           <span>Cerca</span>
         </button>
@@ -17,13 +17,13 @@
         <span class="mast-sub">DIARIO <em>di</em> LETTURA</span>
       </a>
       <div class="navbar-right">
-        <button type="button" class="nav-search nav-search--mobile" data-search-open aria-label="Cerca nel sito">
+        <button type="button" class="nav-search nav-search--mobile" data-search-open aria-expanded="false" aria-label="Cerca nel sito">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/></svg>
         </button>
       </div>
     </div>
   </nav>
-  <div class="search-panel" id="searchPanel" hidden>
+  <div class="search-panel" id="searchPanel" role="dialog" aria-label="Ricerca nel sito" aria-hidden="true" hidden>
     <div class="container search-panel-inner">
       <div class="search-box">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/></svg>
@@ -31,13 +31,14 @@
         <input id="globalSearchInput" type="search" placeholder="Cerca titolo, autore o parola..." autocomplete="off">
         <button type="button" id="searchClose" aria-label="Chiudi ricerca">&times;</button>
       </div>
+      <p class="search-kbd-hint">Premi <kbd>/</kbd> per cercare, <kbd>Esc</kbd> per chiudere</p>
       <div class="search-results" id="searchResults" aria-live="polite"></div>
     </div>
   </div>
   <div class="sub-mast" aria-hidden="true">
     <div class="container sub-mast-inner"></div>
   </div>
-  <div class="nav-links" aria-label="Menu">
+  <div class="nav-links" id="siteDrawer" aria-label="Menu">
     <div class="drawer-inner">
       <p class="drawer-label">Menu</p>
       <a href="index.html" class="nav-link" data-page="home">Home</a>

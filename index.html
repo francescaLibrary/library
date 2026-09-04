@@ -5,6 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Pagine e Parole - Recensioni, riflessioni e viaggi tra le pagine. Un blog dedicato agli amanti della lettura.">
     <title>Pagine e Parole - Recensioni Libri</title>
+    <meta name="theme-color" content="#1e2f4e">
+    <link rel="canonical" href="https://francescaLibrary.github.io/library/">
+    <link rel="manifest" href="site.webmanifest">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="it_IT">
+    <meta property="og:site_name" content="Pagine e Parole">
+    <meta property="og:title" content="Pagine e Parole - Recensioni Libri">
+    <meta property="og:description" content="Recensioni, riflessioni e viaggi tra le pagine. Un blog dedicato agli amanti della lettura.">
+    <meta property="og:url" content="https://francescaLibrary.github.io/library/">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Pagine e Parole - Recensioni Libri">
+    <meta name="twitter:description" content="Recensioni, riflessioni e viaggi tra le pagine. Un blog dedicato agli amanti della lettura.">
 
     <!-- CSS -->
     <link rel="stylesheet" href="css/base.css">
@@ -16,9 +28,11 @@
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='18' fill='%231C1917'/%3E%3Ctext x='50' y='68' font-size='58' text-anchor='middle' fill='%23FCFBF7' font-family='Georgia' font-style='italic'%3EP.%3C/text%3E%3C/svg%3E">
 </head>
 <body data-page="home">
+    <a class="skip-link" href="#contenuto">Salta al contenuto</a>
     <!-- Navbar -->
     <div id="navbar"></div>
 
+    <main id="contenuto">
     <!-- Masthead LRB -->
     <section class="lrb-masthead">
         <div class="container container-narrow">
@@ -64,9 +78,6 @@
             <div class="book-grid lrb-grid" id="latest-reviews">
                 <div class="loading">Caricamento recensioni...</div>
             </div>
-            <div class="mt-2xl">
-                <a href="recensioni.html" class="link-arrow">Tutte le recensioni →</a>
-            </div>
         </div>
     </section>
 
@@ -92,9 +103,16 @@
             </div>
         </div>
     </section>
+    </main>
 
     <!-- Footer -->
     <div id="footer"></div>
+
+    <noscript>
+        <div class="container">
+            <p style="padding:2rem 0">Questo sito richiede JavaScript per mostrare i contenuti. Intanto puoi leggere le <a href="recensioni.html">recensioni</a> o sfogliare la <a href="libreria.html">libreria</a>.</p>
+        </div>
+    </noscript>
 
     <!-- JavaScript -->
     <script src="js/data-loader.js"></script>

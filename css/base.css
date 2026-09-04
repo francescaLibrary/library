@@ -216,3 +216,19 @@ hr, .rule { border: none; border-top: 1px solid var(--line); margin: var(--space
     .section-title { font-size: 1.5rem; }
     .section-subtitle { font-size: 1.05rem; }
 }
+
+/* ─── Skip link ─── */
+.skip-link { position: absolute; left: 1rem; top: -100px; z-index: 2000; background: var(--lrb-navy); color: #fff; font-family: var(--font-sans); font-size: 0.9rem; padding: 0.6rem 1rem; border-radius: 0 0 4px 4px; text-decoration: none; transition: top 180ms ease; }
+.skip-link:focus { top: 0; color: #fff; }
+
+/* ─── Riduci animazioni se richiesto dal sistema ─── */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
+  }
+  .loading::after { animation: none !important; border-top-color: var(--line-strong); }
+}

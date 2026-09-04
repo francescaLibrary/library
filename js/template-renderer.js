@@ -22,7 +22,7 @@ class TemplateRenderer {
 
     formatDateLRB(dateStr) {
         if (!dateStr) return '';
-        const MONTHS_EN = ['JANUARY','FEBRUARY','MARCH','APRIL','MAY','JUNE','JULY','AUGUST','SEPTEMBER','OCTOBER','NOVEMBER','DECEMBER'];
+        const MONTHS_EN = ['GENNAIO','FEBBRAIO','MARZO','APRILE','MAGGIO','GIUGNO','LUGLIO','AGOSTO','SETTEMBRE','OTTOBRE','NOVEMBRE','DICEMBRE'];
         const [y, m, d] = dateStr.split('-').map(Number);
         if (!y || !m) return dateStr;
         const day = d ? `${String(d).padStart(2, '0')} ` : '';
@@ -115,12 +115,12 @@ class TemplateRenderer {
         return books.map(book => this.renderBookCard(book, genres)).join('');
     }
 
-    renderFeaturedBook(book, genres = []) {
+    renderFeaturedBook(book, kicker = 'In evidenza') {
         const date = this.formatDateLRB(book.dateRead);
         return `
             <div class="lrb-featured-grid">
                 <div class="lrb-featured-text">
-                    <p class="lrb-kicker">Latest</p>
+                    <p class="lrb-kicker">${this.esc(kicker)}</p>
                     <h2 class="lrb-featured-title">${this.esc(book.title)}</h2>
                     <p class="lrb-featured-author">di ${this.esc(book.author)}</p>
                     ${date ? `<p class="lrb-featured-date">${date}</p>` : ''}
@@ -192,8 +192,8 @@ class TemplateRenderer {
     renderQuote(quote, title, author) {
         return `
             <blockquote class="lrb-quote">
-                <p class="lrb-quote-text">"${quote}"</p>
-                <cite class="lrb-quote-source">${title} — ${author}</cite>
+                <p class="lrb-quote-text">&ldquo;${this.esc(quote)}&rdquo;</p>
+                <cite class="lrb-quote-source">${this.esc(title)} — ${this.esc(author)}</cite>
             </blockquote>
         `;
     }
@@ -305,6 +305,7 @@ class TemplateRenderer {
     }
 
     renderContactCards(social) {
+        if (!social || !social.email || !social.email.address) return '';
         return `
             <a href="mailto:${social.email.address}" class="contact-card">
                 <span class="contact-card-label">Email</span>

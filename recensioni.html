@@ -5,6 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Tutte le recensioni dei libri letti - Pagine e Parole">
     <title>Recensioni - Pagine e Parole</title>
+    <meta name="theme-color" content="#1e2f4e">
+    <link rel="canonical" href="https://francescaLibrary.github.io/library/recensioni.html">
+    <link rel="manifest" href="site.webmanifest">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="it_IT">
+    <meta property="og:site_name" content="Pagine e Parole">
+    <meta property="og:title" content="Recensioni - Pagine e Parole">
+    <meta property="og:description" content="Tutte le recensioni dei libri letti, con note sincere.">
+    <meta property="og:url" content="https://francescaLibrary.github.io/library/recensioni.html">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Recensioni - Pagine e Parole">
+    <meta name="twitter:description" content="Tutte le recensioni dei libri letti, con note sincere.">
     
     <!-- CSS -->
     <link rel="stylesheet" href="css/base.css">
@@ -16,18 +28,20 @@
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='18' fill='%231C1917'/%3E%3Ctext x='50' y='68' font-size='58' text-anchor='middle' fill='%23FCFBF7' font-family='Georgia' font-style='italic'%3EP.%3C/text%3E%3C/svg%3E">
 </head>
 <body data-page="recensioni">
+    <a class="skip-link" href="#contenuto">Salta al contenuto</a>
     <!-- Navbar -->
     <div id="navbar"></div>
-    
+
+    <main id="contenuto">
     <!-- Page Header LRB -->
     <header class="page-header page-header--center">
         <div class="container container-narrow">
             <span class="section-eyebrow">Diario di lettura</span>
             <h1 class="page-header-title">Recensioni</h1>
             <p class="page-header-subtitle">Tutti i libri letti, con note sincere</p>
-            <div class="lrb-tabs" role="tablist" aria-label="Filtra recensioni">
-                <button class="lrb-tab is-active" data-tab="latest" role="tab" aria-selected="true">Latest</button>
-                <button class="lrb-tab" data-tab="best" role="tab" aria-selected="false">Best of</button>
+            <div class="lrb-tabs" role="group" aria-label="Vista recensioni">
+                <button type="button" class="lrb-tab is-active" data-tab="latest" aria-pressed="true">Ultime</button>
+                <button type="button" class="lrb-tab" data-tab="best" aria-pressed="false">Migliori</button>
             </div>
         </div>
     </header>
@@ -39,28 +53,28 @@
             <div class="filter-bar">
                 <div class="filter-row">
                     <div class="filter-group">
-                        <label class="filter-label">Genere</label>
+                        <label class="filter-label" for="filter-genre">Genere</label>
                         <select class="filter-select" id="filter-genre">
                             <option value="">Tutti i generi</option>
                         </select>
                     </div>
                     
                     <div class="filter-group">
-                        <label class="filter-label">Voto</label>
+                        <label class="filter-label" for="filter-rating">Voto</label>
                         <select class="filter-select" id="filter-rating">
                             <option value="">Tutti i voti</option>
                         </select>
                     </div>
                     
                     <div class="filter-group">
-                        <label class="filter-label">Anno</label>
+                        <label class="filter-label" for="filter-year">Anno</label>
                         <select class="filter-select" id="filter-year">
                             <option value="">Tutti gli anni</option>
                         </select>
                     </div>
                     
                     <div class="filter-group filter-search">
-                        <label class="filter-label">Cerca</label>
+                        <label class="filter-label" for="filter-search">Cerca</label>
                         <input type="text" id="filter-search" placeholder="Titolo o autore...">
                     </div>
                 </div>
@@ -69,6 +83,7 @@
             <!-- Results Info -->
             <div class="results-info">
                 <span class="results-count" id="results-count">Caricamento...</span>
+                <button type="button" class="link-arrow" id="surprise-btn">Un libro a sorpresa &rarr;</button>
                 <div class="results-sort">
                     <label for="filter-sort">Ordina per:</label>
                     <select class="filter-select" id="filter-sort">
@@ -88,9 +103,16 @@
             </div>
         </div>
     </section>
+    </main>
     
     <!-- Footer -->
     <div id="footer"></div>
+
+    <noscript>
+        <div class="container">
+            <p style="padding:2rem 0">Questo sito richiede JavaScript per mostrare le recensioni. Intanto puoi sfogliare la <a href="libreria.html">libreria</a> o tornare alla <a href="index.html">home</a>.</p>
+        </div>
+    </noscript>
     
     <!-- JavaScript -->
     <script src="js/data-loader.js"></script>

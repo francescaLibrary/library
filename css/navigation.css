@@ -36,9 +36,9 @@
 .nav-toggle.open span:nth-child(2) { opacity: 0; }
 .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-.nav-search { display: inline-flex; align-items: center; gap: 0.45rem; color: #8a8a8a; font-size: 0.9rem; font-family: var(--font-sans); text-decoration: none; }
+.nav-search { display: inline-flex; align-items: center; gap: 0.45rem; color: #8a8a8a; font-size: 0.9rem; font-family: var(--font-sans); text-decoration: none; background: none; border: none; cursor: pointer; padding: 0.25rem; }
 .nav-search:hover { color: var(--lrb-navy); }
-.nav-search--mobile { display: none; color: var(--lrb-navy); justify-self: end; }
+.nav-search--mobile { display: none; color: var(--lrb-navy); justify-self: end; min-width: 44px; min-height: 44px; align-items: center; justify-content: center; }
 
 .masthead { justify-self: center; text-align: center; text-decoration: none; line-height: 1; display: flex; flex-direction: column; gap: 2px; }
 .masthead:hover { text-decoration: none; }
@@ -56,8 +56,11 @@
 .search-box { display: flex; align-items: center; gap: 0.6rem; border-bottom: 2px solid var(--lrb-navy); padding-bottom: 0.5rem; color: var(--lrb-navy); }
 .search-box input { flex: 1; min-width: 0; border: none; background: transparent; font-family: var(--font-body); font-size: 1.2rem; color: var(--ink); }
 .search-box input:focus { outline: none; }
+.search-box:focus-within { border-bottom-color: var(--lrb-blue); border-bottom-width: 3px; }
 .search-box input::-webkit-search-cancel-button { cursor: pointer; }
-#searchClose { background: none; border: none; cursor: pointer; font-size: 1.6rem; line-height: 1; color: var(--muted); padding: 0 0.25rem; }
+.search-kbd-hint { font-family: var(--font-sans); font-size: 0.78rem; color: var(--muted); padding: 0.5rem 0 0; }
+.search-kbd-hint kbd { font-family: inherit; font-size: 0.75rem; border: 1px solid var(--line-strong); border-bottom-width: 2px; border-radius: 4px; padding: 0 0.4rem; background: #fff; }
+#searchClose { background: none; border: none; cursor: pointer; font-size: 1.6rem; line-height: 1; color: var(--muted); min-width: 44px; min-height: 44px; display: inline-flex; align-items: center; justify-content: center; }
 #searchClose:hover { color: var(--ink); }
 .search-results { display: flex; flex-direction: column; }
 .search-hint, .search-empty { font-family: var(--font-body); font-style: italic; color: var(--muted); padding: 0.9rem 0; }
@@ -100,10 +103,7 @@
 #footer .footer-bottom-inner { display: flex; align-items: center; gap: 1.25rem; max-width: var(--container-max); margin: 0 auto; padding: 0 var(--space-xl); }
 #footer .footer-mark { width: 44px; height: 44px; border: 1px solid rgba(255,255,255,0.7); border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 0.8rem; font-weight: 700; color: #fff; flex-shrink: 0; }
 #footer .footer-text { margin: 0; font-family: var(--font-sans); font-size: 0.85rem; color: rgba(255,255,255,0.7); }
-#footer .footer-legal { display: flex; gap: 1rem; margin-left: auto; }
-#footer .footer-legal .footer-link { font-size: 0.85rem; color: rgba(255,255,255,0.7); border: none; white-space: nowrap; font-family: var(--font-sans); }
-#footer .footer-legal .footer-link:hover { color: #fff; }
-#footer .to-top { width: 44px; height: 44px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.7); background: transparent; color: #fff; font-size: 1.1rem; cursor: pointer; flex-shrink: 0; }
+#footer .to-top { width: 44px; height: 44px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.7); background: transparent; color: #fff; font-size: 1.1rem; cursor: pointer; flex-shrink: 0; margin-left: auto; }
 #footer .to-top:hover { background: #fff; color: var(--lrb-navy-deep); }
 
 @media (max-width: 1024px) {
@@ -114,10 +114,9 @@
   .nav-search--desktop { display: none; }
   .nav-search--mobile { display: inline-flex; }
   .navbar .container.navbar-inner { grid-template-columns: auto 1fr auto; }
-  .mast-title { font-size: 1.05rem; }
+  .masthead { min-width: 0; }
+  .mast-title { font-size: 1.05rem; overflow: hidden; text-overflow: ellipsis; }
   .mast-sub { display: none; }
   #footer .footer-grid { grid-template-columns: 1fr; gap: 1.75rem; }
   #footer .footer-bottom-inner { flex-wrap: wrap; gap: 0.9rem; }
-  #footer .footer-legal { margin-left: 0; width: 100%; }
-  #footer .to-top { margin-left: auto; }
 }
