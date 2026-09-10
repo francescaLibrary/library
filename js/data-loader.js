@@ -94,14 +94,12 @@ class DataLoader {
             );
         }
 
-        // Search by title, author, review text or tags
+        // Search by title or author
         if (filters.search) {
             const searchLower = filters.search.toLowerCase();
-            books = books.filter(book =>
+            books = books.filter(book => 
                 book.title.toLowerCase().includes(searchLower) ||
-                book.author.toLowerCase().includes(searchLower) ||
-                (book.review && book.review.toLowerCase().includes(searchLower)) ||
-                (book.tags && book.tags.some(t => t.toLowerCase().includes(searchLower)))
+                book.author.toLowerCase().includes(searchLower)
             );
         }
 
